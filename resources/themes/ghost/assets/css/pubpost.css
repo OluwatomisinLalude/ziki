@@ -1,0 +1,81 @@
+@import url("color-modes.css");
+body {
+  background: var(--dark-bg-color) !important;
+}
+a {
+  text-decoration: none;
+}
+.pubpost-container {
+  background: var(--pubpost-main-bg);
+}
+
+.pubpost-logo-area img {
+  object-fit: none;
+}
+.pubpostnav-area,
+.pubpost-logo-area {
+  border-bottom: 1px solid var(--post-summary-border-bottom);
+}
+.pubpost-header {
+  background-color: var(--published-post-header);
+}
+
+.pubdrafts {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--top-tab-link);
+}
+.active {
+  border-bottom: 2px solid var(--custom-deep-purple);
+}
+
+.pubdrafts:hover,
+.active > a {
+  color: var(--custom-deep-purple);
+  text-decoration: none;
+}
+
+.pub-area:first-child {
+  margin-top: 2rem !important;
+}
+.pub-area:last-child {
+  margin-bottom: 12rem;
+}
+.pubpost-post {
+  border-bottom: 1px solid var(--post-summary-border-bottom);
+}
+.pubpost-content {
+  background: var(--pubpost-main-bg);
+  margin-top: -20px;
+}
+.pubpost-postauthor {
+  font-size: 14px;
+  color: var(--custom-deep-purple);
+}
+.pubpost-post-title {
+  font-size: 24px;
+  color: var(--post-title-font-color);
+}
+.pubpost-post-title:hover {
+  color: var(--post-title-font-color);
+}
+.pubpost-postbody {
+  font-size: 14px;
+  color: var(--text-color);
+}
+.pubpost-date {
+  font-size: 12px;
+  color: var(--text-color);
+}
+
+/* Mobile Styles  */
+@media screen and (max-width: 768px) {
+  .nothing,
+  .sidebar {
+    display: none;
+  }
+  .pub-area {
+    display: block;
+    width: 100%;
+  }
+}

@@ -13,9 +13,18 @@
         "monolog/monolog": "^1.24",
         "twig/twig": "^2.0",
         "symfony/finder": "^4.2",
-        "kzykhys/yaml-front-matter": ">=1.0"
+        "kzykhys/yaml-front-matter": ">=1.0",
+        "erusev/parsedown": "^1.7",
+        "mnapoli/front-yaml": "^1.6",
+        "symfony/http-foundation": "^4.2"
+    },
+    "config": {
+        "optimize-autoloader": true
     },
     "autoload": {
+        "files": [
+            "src/helpers.php"
+        ],
         "psr-4": {
             "Ziki\\": "src/"
         }

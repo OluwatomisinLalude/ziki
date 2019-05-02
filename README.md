@@ -1,41 +1,67 @@
 # ziki
-The New Ziki
 
-<p>A blogging network like medium - but it runs on your own self-hosted domain. </br>
-It does not run on a url like medium.com/markessien, but I install it on markessien.com. </br>
-When I am there and logged in, I can write blog posts and publish them. </br>
-Others using the same software can <b>follow</b> my own blog using RSS. </br>
-You see what others are writing on your own timeline. </br>
-I can comment on my own timeline, and it shows up on your own website. </br>
-I can select various themes for the blog, though they all follow the same general look and feel.</p>
+ziki is a blogging service like wordpress it runs on your own self-hosted domain. Think of it as a distributed social network.
+It does not run on a url like `medium.com/markessien` or `wordpress.com/markessien`. I can install ziki on my own personal domain and set up my own blog.
 
+I can install ziki on `markessien.com` or on a custom domain of my choosing.
 
-This app is created <b>without a database</b>
-The posts are stored as markdown files.
+Ziki relies on the use of two terms:
 
+`Owner` and `Guest`
 
+## The owner
 
+This is the person that downloaded ziki and installed it on their domain. The owner has permission to view their timeline, write and publish posts and follow other `ziki` users' posts using RSS. The owner only has an additional link called `timeline` which is private. The owner can choose to make their timeline public.
 
-### FOR PR do this: 
+## The Guest
 
-### TITLE OF PR
+This is the person visiting a `ziki` site. When on the site, the users can view posts by the site [owner](##The-owner). If a guest wants to interact with the posts i.e like or comment they can login to the site to access these privilleges. If the site uses [disqus](https://disqus.com/) for commenting, the guest has no access to native login only the site [owner](##The-owner) does.
 
-Forum fragment Webview
-### PURPOSE OF PR
+### Contributing
 
-To Implement a webview for the forum chat.
-### FEATURES IMPLEMENTED
+- Make sure you have setup your `PHP` development environment
+- Ensure `composer` is setup on your development environment
+- Fork your own copy of the repository
+- Clone it
+- Run `composer install --no-dev`
+- Run `php -S localhost:8000`.
+- In your browser, go to `localhost:8000` to view the website.
 
-Forum fragment
-OnbackPressed between fragments
+#### The Pull Request Template:
 
-### HOW TO TEST
+```
+PR Title: <one-line desciption of your changes>
 
-When a user click on the forum button the forum fragment web view should be open
-when the back button is clicked, the today fragment should be on the screen
-Also when the back button is clicked again the user should be able to exit the app.
+**Changes**
+- descibe first change
+- describe more changes (if necessary)
+- ...
 
-### PIVOTAL TRACKER STORY LINK
-https://www.pivotaltracker.com/n/projects/your ticket id
+**Testing**
+Describe how to test the changes you've made. For example, if
+you added a logout button to the timeline page:
+Visit `localhost:8000/timeline` and click on the logout button.
 
-### Add page screen shot from your local
+**Other Info**
+Add any info that may be necessary. This section is not required.
+
+**Screenshots**
+Add if appropriate. Screenshots are needed for most front end work.
+```
+
+#### Pull Request Example:
+
+```
+**Changes**
+- Add a logout button to the timeline page
+
+**Testing**
+Visit `localhost:8000/timeline` and click on the logout button
+at the top right corner of the page.
+
+**Other Info**
+N/A
+
+**Screenshots**
+A screenshot would be added here showing the button on the page.
+```

@@ -1,7 +1,694 @@
-<aside>
-  <!-- using semantic tags -->
-  <img src="{{userimage source}}" alt="profile photo">
-  <main>
-    <!-- render more details here later -->
-  </main>
-</aside>
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Lato');
+
+  :root {
+    --ziki-purple: #280966;
+  }
+
+  /* DEMO STYLE*/
+  /*editor code goes here*/
+  .editor-row {
+    margin-bottom: 50px;
+  }
+
+  .ql-toolbar.ql-snow {
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    padding: 8px;
+    background-color: #f5f5f5;
+  }
+
+  .ql-editor.ql-blank {
+    box-sizing: border-box;
+    height: 100%;
+    background-color: #f5f5f5;
+    border: 0 !important;
+  }
+
+  #editor {
+    height: 20vh !important;
+  }
+
+  /**/
+
+  p {
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+  }
+
+  a,
+  a:hover,
+  a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .purple {
+    color: #280A66;
+  }
+
+  .purple-bg {
+    background-color: #280A66;
+  }
+
+  .btn-light {
+    border: 1px solid #280A66;
+    color: #280A66;
+    background-color: #fff;
+  }
+
+  .temp-nav {
+    color: #280A66;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-weight: bolder;
+    border-bottom: 2px solid #000
+  }
+
+  .nav-item {
+    padding-top: 8px;
+  }
+
+  .footer {
+    background-color: #280A66;
+    color: #ffffff;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  .lucid{color: ;}
+
+  .btn-light:hover {
+    border: 1px solid #fff;
+    color: #fff;
+    background-color: #280A66;
+  }
+
+  .navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+  }
+
+  .line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+  }
+
+  i,
+  span {
+    display: inline-block;
+  }
+
+  /* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+  .wrapper {
+    display: flex;
+    align-items: stretch;
+  }
+
+  #sidebar {
+    min-width: 350px;
+    max-width: 350px;
+    background: #f8f9fb;
+    color: #000;
+    transition: all 0.3s;
+  }
+
+  #sidebar.active {
+    min-width: 90px;
+    max-width: 90px;
+    text-align: center;
+  }
+
+  #sidebar.active img.profile-pic {
+    border-radius: 50%;
+    height: 60px;
+    min-width: 60px;
+    max-width: 60px;
+    margin-left: -19px;
+  }
+
+  #sidebar.active .sidebar-header h3,
+  #sidebar.active .sidebar-header h6,
+  #sidebar.active .sidebar-header .follows,
+  #sidebar.active .CTAs {
+    display: none;
+  }
+
+  #sidebar.active .sidebar-header strong {
+    display: block;
+  }
+
+  #sidebar ul li a {
+    text-align: left;
+  }
+
+  #sidebar.active ul li a {
+    padding: 20px 10px;
+    text-align: center;
+    font-size: 0.85em;
+  }
+
+  #sidebar.active ul li a i {
+    margin-right: 0;
+    display: block;
+    font-size: 1.8em;
+    margin-bottom: 5px;
+  }
+
+  #sidebar.active ul ul a {
+    padding: 10px !important;
+  }
+
+  #sidebar.active .dropdown-toggle::after {
+    top: auto;
+    bottom: 10px;
+    right: 50%;
+    -webkit-transform: translateX(50%);
+    -ms-transform: translateX(50%);
+    transform: translateX(50%);
+  }
+
+  #sidebar .sidebar-header {
+    padding: 20px;
+    background: #f8f9fb;
+  }
+
+  #sidebar .sidebar-header strong {
+    display: none;
+    font-size: 1.8em;
+  }
+
+  #sidebar ul.components {
+    padding: 20px 0;
+  }
+
+  #sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+  }
+
+  #sidebar ul li span:hover {
+    color: #fff;
+    background: #280A66;
+    padding: 10px 25px;
+    border-radius: 10px;
+  }
+
+  #sidebar ul li a i {
+    margin-right: 10px;
+  }
+
+  #sidebar ul li.active>a,
+  a[aria-expanded="true"] {
+    color: #fff;
+    background: #6d7fcc;
+  }
+
+  a[data-toggle="collapse"] {
+    position: relative;
+  }
+
+  .dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+  }
+
+  ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #6d7fcc;
+  }
+
+  ul.CTAs {
+    padding: 20px;
+  }
+
+  ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+  }
+
+  a.article,
+  a.article:hover {
+    background: #6d7fcc !important;
+    color: #fff !important;
+  }
+
+  /* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+  #content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+  }
+
+  /* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+  @media (max-width: 768px) {
+    #sidebar {
+      min-width: 90px;
+      max-width: 90px;
+      text-align: center;
+      margin-left: -90px !important;
+    }
+
+    .dropdown-toggle::after {
+      top: auto;
+      bottom: 10px;
+      right: 50%;
+      -webkit-transform: translateX(50%);
+      -ms-transform: translateX(50%);
+      transform: translateX(50%);
+    }
+
+    #sidebar.active {
+      margin-left: 0 !important;
+    }
+
+    #sidebar .sidebar-header h3,
+    #sidebar.active .sidebar-header h6,
+    #sidebar.active .sidebar-header .follows,
+    #sidebar .CTAs {
+      display: none;
+    }
+
+    #sidebar .sidebar-header strong {
+      display: block;
+    }
+
+    #sidebar ul li a {
+      padding: 20px 10px;
+    }
+
+    #sidebar ul li a span {
+      font-size: 0.85em;
+    }
+
+    #sidebar ul li a i {
+      margin-right: 0;
+      display: block;
+    }
+
+    #sidebar ul ul a {
+      padding: 10px !important;
+    }
+
+    #sidebar ul li a i {
+      font-size: 1.3em;
+    }
+
+    #sidebar {
+      margin-left: 0;
+    }
+
+    #sidebarCollapse span {
+      display: none;
+    }
+  }
+
+  /*code for side-bar content*/
+  img.profile-pic {
+    border-radius: 50%;
+    height: 200px;
+  }
+
+
+  /*Css for timeline page*/
+  .blogger-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
+
+  /*css for timeline page done*/
+
+  /* beginning of styling for the login modal */
+  .login-modal-popup-left-column {
+    background: linear-gradient(180deg, #973793 0%, rgba(134, 64, 131, 0) 100%),
+      #3b0e75;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+
+  .login-modal-popup-right-column {
+    background: #ffffff;
+    box-shadow: 0px 1px 25px rgba(0, 0, 0, 0.25);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+
+  .login-modal-border-radius {
+    border-radius: 5px;
+  }
+
+  .ziki-Welcome-msg {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: normal;
+  }
+
+  .ziki-about-msg {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: normal;
+  }
+
+  .login-msg {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: normal;
+    letter-spacing: 0.1em;
+    color: #111;
+  }
+
+  .login-dialog {
+    padding: 30px;
+    padding-top: 100px;
+    padding-bottom: 50px;
+    box-sizing: border-box;
+  }
+
+  .google-signin-btn {
+    cursor: pointer;
+    background: #ffffff;
+    box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+  }
+
+  .facebook-signin-btn {
+    cursor: pointer;
+    background: #ffffff;
+    box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin-top: 25px;
+  }
+
+  .width-250px {
+    width: 250px;
+  }
+
+  .bottom-msg {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 9px;
+    line-height: normal;
+    text-align: justify;
+    color: #111;
+  }
+
+  .bio-text {
+    color: #000000;
+  }
+
+  .auth-link {
+    text-decoration: none;
+    color: #111;
+  }
+
+  .auth-link:hover {
+    text-decoration: none;
+    color: #111;
+  }
+
+  .greetings {
+    margin-top: 70px;
+  }
+
+  .modal-dialog-container {
+    margin: 150px auto;
+  }
+
+  .logo {
+    padding-left: 70px;
+    margin-top: 50px;
+  }
+
+  .modal-close-button {
+    display: none;
+  }
+
+  .email-login-button {
+    background-color: transparent;
+    border: none;
+  }
+
+  .email-login-container {
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background-color: #ffffff;
+    box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 0.6rem;
+    font-size: 1.1rem;
+  }
+
+  .email-input {
+    padding: 0.4rem;
+  }
+
+  .optional-login-text {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #000;
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+  }
+
+  .optional-login-text span {
+    background: #fff;
+    padding: 0 10px;
+  }
+
+  .signin-btn {
+    background-color: #ffffff;
+    border-radius: 0.6rem;
+    border: none;
+    box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25);
+    padding: 0.5rem 1rem;
+  }
+
+  .width-100pc {
+    width: 100%;
+  }
+
+  .no-border {
+    border: none;
+  }
+
+  .magic-msg {
+    margin: 3rem auto 3rem auto;
+    width: 250px;
+  }
+
+  @media only screen and (max-width: 767px) {
+
+    /* modal styling For mobile phones: */
+    .modal-close-button {
+      display: initial;
+    }
+
+    #modalLoginForm,
+    #modalLoginForm .modal-content {
+      /* bootstrap sets background of .modal-content */
+      /* so it must also be overridden along with #modalLoginForm */
+      background: -webkit-linear-gradient(180deg,
+        #973793 0%,
+        rgba(134, 64, 131, 0) 100%),
+        #3b0e75 !important;
+    }
+
+    #modalLoginForm .modal-content {
+      border: none;
+    }
+
+    .login-modal-popup-left-column {
+      background: transparent;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+
+    .login-modal-popup-right-column {
+      width: 87%;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.26);
+      box-shadow: 0px 1px 25px rgba(0, 0, 0, 0.25);
+      border-radius: 20px;
+    }
+
+    .login-dialog {
+      padding: 50px 30px;
+      box-sizing: border-box;
+    }
+
+    .greetings {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      margin-top: 0px;
+      box-sizing: border-box;
+    }
+
+    .modal-dialog-container {
+      margin: 100px auto;
+    }
+
+    .login-msg {
+      font-family: Lato;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: normal;
+      margin-bottom: 20px;
+      letter-spacing: 0.1em;
+      color: #ffffff;
+    }
+
+    .bottom-msg {
+      font-family: Lato;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 9px;
+      line-height: normal;
+      text-align: justify;
+      color: #ffffff;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+
+    /* login modal for tabs */
+    .modal-content {
+      width: 125%;
+      margin: auto;
+      left: -12%;
+    }
+  }
+
+  @media screen and (min-width: 992px) {
+
+    /* login modal for PC */
+    .auth-link {
+      font-size: 1.4rem;
+    }
+
+    .bottom-msg {
+      font-size: 0.7rem;
+    }
+  }
+</style>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="wrapper">
+      <!-- side bar here -->
+      <div id="sidebar">
+        <div class="sidebar-header pt-5">
+          <div class="row">
+            <div class="col-12 col-sm-8 mx-auto d-block">
+              <img src="/resources/themes/ghost/assets/img/fiverr.jpg" alt="ziki logo"
+                class="img-fluid profile-pic circle" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-sm-12">
+              <h3 class="text-center pt-4 owner-name purple"><b>DESTINY IHEJIRIKA</b></h3>
+              <h6 class="text-center pt-2 owner-desc">Front End Developer, UI/UX Developer, Traveler, Friend</h6>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 text-right follows"><a href="/following"><b>46</b> <span class="purple">Following</span></a></div>
+            <div class="col-sm-6 text-left follows"><a href="/followers"><b>165</b> <span class="purple">Followers</span></a></div>
+          </div>
+          <hr>
+          <!-- <strong>BS</strong> -->
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+
+            <ul class="list-unstyled components text-center">
+              {% if user.role == 'admin' %}
+              <li><a href="/timeline"><h6 class="text-center"><span><b>TIMELINE</b></span></h6></a></li>
+              <li>
+                <div class="dropdown">
+                         <span class=" dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                             <b>MY POSTS</b>
+                         </span>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <button class="dropdown-item"> <a href="/published-posts">Published Posts</a></button>
+                    <button class="dropdown-item"> <a href="/drafts">Drafts</a></button>
+                  </div>
+                </div>
+              </li>
+
+              <li><a href="/videos"><h6 class="text-center"><span><b>VIDEOS</b></span></h6></a></li>
+              <li><a href="/portfolio"><h6 class="text-center"><span><b>PORTFOLIO</b></span></h6></a></li>
+              <li><a href="/about"><h6 class="text-center"><span><b>ABOUT</b></span></h6></a></li>
+              {% elseif user.role == 'guest' %}
+              <li><a href="/"><h6 class="text-center"><span><b>HOME</b></span></h6></a></li>
+              <li><a href="/about"><h6 class="text-center"><span><b>ABOUT</b></span></h6></a></li>
+              {% else %}
+              <li><a href="/"><h6 class="text-center"><span><b>HOME</b></span></h6></a></li>
+              <li>
+                <div class="dropdown">
+                         <span class=" dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                             <b>MY POSTS</b>
+                         </span>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <button class="dropdown-item"> <a href="/published-posts">PUBLISHED POSTS</a></button>
+                    <button class="dropdown-item"> <a href="/drafts">DRAFTS</a></button>
+                  </div>
+                </div>
+              </li>              <li><a href="/profile"><h6 class="text-center"><span><b>PROFILE</b></span></h6></a></li>
+              <li><a href="/about"><h6 class="text-center"><span><b>ABOUT</b></span></h6></a></li>
+              {% endif %}
+            </ul>
+
+            <ul class="list-unstyled CTAs d-flex justify-content-center">
+              <li>
+                <a href="#"><button class="btn btn-light">Follow Me</button></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+

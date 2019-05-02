@@ -1,0 +1,119 @@
+{% set title = "404"%}
+{% extends 'layout.html' %} {% block page_content %}
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Lemonada);
+    /*NAVBAR STYLING BEGINNING*/
+    
+    .nav-bar ul {
+        list-style: none;
+    }
+    
+    .nav-bar ul .nav-items a {
+        color: var(--number-of-followers-font-color);
+        -webkit-transition: all ease-in .3s;
+        transition: all ease-in .3s;
+        font-size: 20px;
+    }
+    
+    .nav-bar ul .nav-items a:hover {
+        color: var(--custom-deep-purple);
+        text-decoration: none;
+        -webkit-transition: all ease-in .3s;
+        transition: all ease-in .3s;
+    }
+    
+    .nav-bar {
+        border-bottom: 1px solid #a4a4a4;
+    }
+    /*NAVBAR STYLING END*/
+    
+    .main-body {
+        background-color: var(--dark-bg-color);
+    }
+    
+    .main-body .error-display {
+        margin-top: 2em;
+    }
+    
+    .main-body .error-number {
+        font-weight: 500;
+        font-size: 48px;
+        line-height: 15px;
+        text-align: center;
+        color: #000000;
+        margin-bottom: 1.5em;
+        font-family: Lemonada, Roboto;
+        letter-spacing: 0.03em;
+    }
+    
+    .main-body .error-text {
+        font-family: Lemonada, Roboto;
+        letter-spacing: 0.03em;
+        margin: 30px;
+        font-size: 24px;
+        font-weight: 500;
+    }
+    
+    .main-body .homepage-btn {
+        padding: 16px;
+        margin-top: 50px;
+        background-color: #280A66;
+        border-radius: 11px;
+        font-size: 14px;
+        color: white;
+        font-family: Lemonada, Roboto;
+        border: 0;
+    }
+    
+    .main-body .homepage-btn:hover {
+        opacity: 0.8;
+        border: 0;
+    }
+    
+    .main-body .error-image {
+        width: 30%;
+        margin-top: 2em;
+    }
+    /*media queries*/
+    
+    @media screen and (max-width: 600px) {
+        .main-body .error-text {
+            margin: 30px;
+            font-size: 22px;
+            font-weight: 500;
+        }
+    }
+    /*media queries*/
+</style>
+<div class="container-fluid main-body">
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 sidebar">
+            <!--
+                SIDE-BAR-ENTERS-HERE
+            -->
+
+        </div>
+
+        <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12 body-of-blog">
+            <!--
+                LOGO
+            -->
+        <!--    <div class="m-4 text-right">
+		         <img src="resources/themes/ghost/assets/img/Vector.png" alt="ZIKI" class="img-ziki-logo"> 
+	    </div>  -->
+            <div class="row justify-content-lg-center justify-content-md-center justify-content-sm-center">
+                <div class="col-lg-8 col-md-12 col-sm-8 col-xs-12 col-12">
+                    <div class="error-display text-center">
+                        <p class="error-number">404</p>
+                        <h3 class="error-text">Ooops! Looks like that page doesn't exist</h3>
+                        <img src="/resources/themes/ghost/assets/img/404.png" alt="ZIKI" class="error-image">
+                    </div>
+                    <div class="form-group text-center">
+                        <a href='/'><button class="homepage-btn btn btn-primary">Return to Homepage</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock page_content %}

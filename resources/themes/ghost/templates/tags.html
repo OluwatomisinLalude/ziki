@@ -1,0 +1,108 @@
+{% set title = "Tag: #{tag}" %} {% extends 'layout.html' %} {% block
+page_content %}
+<style>
+  :root {
+    /* colors to use */
+    --lucid-purple: #280a66;
+    --lucid-white: #fff;
+    --lucid-gray: #666;
+    --lucid-alt-black: #202020;
+    --lucid-black: #000;
+
+    /* light mode */
+    --main-bg-color: var(--lucid-white);
+    --main-text-color: var(--lucid-black);
+    --blog-date-text-color: var(--lucid-purple);
+    --blog-preview-text-color: var(--lucid-gray);
+    --blog-title-text-color: var(--lucid-black);
+    --tag-name-text-color: var(--lucid-purple);
+    --tag-badge-border-color: var(--lucid-purple);
+  }
+
+  .dark {
+    --main-bg-color: var(--lucid-alt-black);
+    --main-text-color: var(--lucid-white);
+    --blog-date-text-color: var(--lucid-white);
+    --blog-preview-text-color: var(--lucid-white);
+    --blog-title-text-color: var(--lucid-white);
+    --tag-name-text-color: var(--lucid-white);
+    --tag-badge-border-color: var(--lucid-white);
+  }
+
+  .wrapper {
+    width: 100%;
+  }
+
+  .main-content {
+    min-height: 100vh;
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+  }
+
+  .tag-name,
+  .tag-badge {
+    color: var(--tag-name-text-color);
+  }
+
+  .tag-name {
+    text-transform: capitalize;
+  }
+
+  .tag-badge {
+    text-transform: uppercase;
+    border: 1px solid var(--tag-badge-border-color);
+    border-radius: 5px;
+  }
+
+  .img-container {
+    background: url('/resources/themes/ghost/assets/img/active.jpg') no-repeat
+      center / cover;
+  }
+
+  .blog-date {
+    color: var(--blog-date-text-color);
+    font-size: 0.8em;
+  }
+
+  .blog-title p {
+    color: var(--blog-title-text-color);
+    font-weight: bold;
+  }
+
+  .blog-preview p {
+    color: var(--blog-preview-text-color);
+  }
+</style>
+
+<div class="container-fluid py-3">
+  <div class="row">
+    <div id="content" class="col-12 main-content p-5">
+      <p class="my-0 font-weight-bold">TAGGED IN</p>
+      <h2 class="tag-name py-4 my-0 font-weight-bold">{{ tag }}</h2>
+      <div class="tag-badge-container py-2">
+        <span class="tag-badge py-2 px-4">{{ tag }}</span>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          {% for key, feed in posts %}
+          <div class="row pt-4 pb-4">
+            <div class="col-3 img-container"></div>
+            <div class="col-8">
+              <p class="blog-date">
+                {{ feed.timestamp | striptags | date("jS M Y") }}
+              </p>
+              <h3 class="blog-title">
+                <a href="/blog-details/{{ feed.slug }}"
+                  >{{ feed.title | raw }}</a
+                >
+              </h3>
+              <div class="blog-preview">{{ feed.body | raw }}</div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock page_content %}

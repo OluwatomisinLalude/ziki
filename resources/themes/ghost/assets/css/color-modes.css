@@ -1,57 +1,90 @@
 :root {
-    /* CUSTOM PURPLE FOUND ON ALL PAGES FOR BCG AND FONT COLOR*/
-    --custom-deep-purple: #280A66;
+  /* CUSTOM PURPLE FOUND ON ALL PAGES FOR BCG AND FONT COLOR*/
+  --custom-deep-purple: #280a66;
+  --dark-bg-color: #fff;
+  --text-color: #000000;
 
-    /* USER INFO */
-    --avatar-if-no-pic-bcg: #441E93;
-    --cancel-and-delete-button-color: #F14336;
-    --user-name-on-profile-font-color: #1B1B1B;
-    --user-info-on-profile-font-color: #000000;
+  /* USER INFO */
+  --avatar-if-no-pic-bcg: #441e93;
+  --cancel-and-delete-button-color: #f14336;
+  --user-name-on-profile-font-color: #1b1b1b;
+  --user-info-on-profile-font-color: #000000;
 
-    /* POSTS STYLING */
-    --post-title-border-bottom: #A4A4A4;
-    --post-title-font-color: #1B1B1B;
-    --post-summary-font-color: #717171;
-    --post-summary-border-bottom: #EBEBEB;
+  /* POSTS STYLING */
+  --post-title-border-bottom: #a4a4a4;
+  --post-title-font-color: #1b1b1b;
+  --post-summary-font-color: #717171;
+  --post-summary-border-bottom: #ebebeb;
+  --body-of-blog-bg:#f9f9f9;
+  --categories-bg-color:#EEEEEE;
+  --blog-post-title-font:#1b1b1b;
 
-    /* RSS FOLLOWING/FOLLOWERS STYLING */
-    --number-of-followers-font-color: #5C5C5C;
-    --search-btn-bcg: rgba(182, 182, 182, 0.22);
-    --search-btn-font-color: rgba(40, 10, 102, 0.5);
-    --search-btn-border: rgba(40, 10, 102, 0.5);
-    --RSS-following-info-border: #B3B3B3;
+  /* RSS FOLLOWING/FOLLOWERS STYLING */
+  --number-of-followers-font-color: #5c5c5c;
+  --search-btn-bcg: rgba(182, 182, 182, 0.22);
+  --search-btn-font-color: rgba(40, 10, 102, 0.5);
+  --search-btn-border: rgba(40, 10, 102, 0.5);
+  --RSS-following-info-border: #b3b3b3;
 
-    /* WYSIWYG/COMMENTS STYLING */
-    --WYSIWYG-editor-modal-body-bcg: #F9F9F9;
-    --WYSIWYG-editor-input-box-bcg: #F5F5F5;
-    --comment-textarea-box-bcg: #EBEBEB;
-    --drafts-textarea-box-bcg: #EEEEEE;
+  /* WYSIWYG/COMMENTS STYLING */
+  --WYSIWYG-editor-modal-body-bcg: #f9f9f9;
+  --WYSIWYG-editor-input-box-bcg: #f5f5f5;
+  --comment-textarea-box-bcg: #ebebeb;
+  --drafts-textarea-box-bcg: #eeeeee;
 
-    /* THEME TOGGLER STYLING */
-    --theme-toggler-grey-bcg: #E0E0E0;
+  /* THEME TOGGLER STYLING */
+  --theme-toggler-grey-bcg: #e0e0e0;
+
+  /* Published Post header */
+  --published-post-header: transparent;
+  /* Top bar link color */
+  --top-tab-link: #5c5c5c;
 }
 
-
-
 .dark {
-    --dark-bg-color: #111111;
-    --dark-bubbles: #8E9EEE;
-    --dark-color-white: #FFFFFF;
-    --dark-color-dark-purple: #7277EF;
-    --dark-horizontal-line: #EBEBEB;
+  /* Custom Deep purple becomes this color on dark mode */
+  --custom-deep-purple: #7277ef;
+  --dark-bg-color: #111111;
+  --dark-bubbles: #8e9eee;
+  --text-color: #ffffff;
+  --dark-color-white: #ffffff;
+  --dark-horizontal-line: #ebebeb;
 
-    /*LOGIN PAGE */
-    --dark-bg-color: rgba(9, 9, 9, 0.92);
+  /* Post */
+  --post-title-font-color: #7277ef;
 
-    /*LOGIN MODAL */
-    --dark-login-bg-color: #2D2D2D;
-    --dark-left-bg-color: linear-gradient(180deg, #973793 0%, rgba(134, 64, 131, 0) 100%), #3B0E75;
-    --dark-color-black: #000000;
+  /*LOGIN PAGE */
+  --dark-bg-color: rgba(9, 9, 9, 0.92);
 
-    /*  HOMPAGE */
-    --dark-post-text-and-date: #717171;
-    --dark-comment-link: #280A66;
+  /*LOGIN MODAL */
+  --dark-login-bg-color: #2d2d2d;
+  --dark-left-bg-color: linear-gradient(
+      180deg,
+      #973793 0%,
+      rgba(134, 64, 131, 0) 100%
+    ),
+    #3b0e75;
+  --dark-color-black: #000000;
 
-    /*USER PAGE */
-    --dark-profile-name: #8E9EEE;
+  /*  HOMPAGE */
+  --dark-post-text-and-date: #717171;
+  --dark-comment-link: #280a66;
+
+  /*USER PAGE */
+  --dark-profile-name: #8e9eee;
+
+  /* Top bar link color */
+  --top-tab-link: #ffffff;
+
+  /* Published Post header */
+  --published-post-header: #111111;
+
+  /* POSTS STYLING */
+  --body-of-blog-bg:#464646;
+  --categories-bg-color:#DFDFDF;
+  --blog-post-title-font:#FFFFFF;
+  --post-title-border-bottom: #A4A4A4;
+  --post-title-font-color: #FFFFFF;
+  --post-summary-font-color: #FFFFFF;
+  --post-summary-border-bottom: #EBEBEB;
 }

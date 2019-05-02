@@ -1,0 +1,109 @@
+
+  /*STANDARDS*/
+  .published-posts ul {
+    list-style: none;
+  }
+
+  /*NAVBAR STYLING*/
+
+  .published-posts .logo-on-page {
+    margin-bottom: 1em;
+  }
+
+  .published-posts ul .nav-item a {
+    color: var(--number-of-followers-font-color);
+    transition: all ease-in 0.3s;
+    font-size: 20px;
+  }
+
+
+  .published-posts ul .nav-item a:hover {
+    color: var(--custom-deep-purple);
+    text-decoration: none;
+    transition: all ease-in 0.3s;
+  }
+
+  .published-posts ul .nav-item a:active {
+    border-bottom: 1px solid #280a66;
+    padding-bottom: 1.47em;
+  }
+
+  .published-posts .nav-bar:after {
+    content: "";
+    display: block;
+    position: relative;
+    width: 95%;
+    border-bottom: 1px solid #a4a4a4;
+  }
+
+
+
+  /*POSTS STYLING*/
+  .published-posts .post-title a {
+    color: #1b1b1b;
+    transition: all ease-in 0.3s;
+  }
+
+  .published-posts .post-title a:hover {
+    color: var(--custom-deep-purple);
+    text-decoration: none;
+    transition: all ease-in 0.3s;
+  }
+
+  .published-posts .post-author {
+    font-weight: bold;
+    color: var(--custom-deep-purple);
+  }
+
+  .published-posts .post-content-summary {
+    color: var(--post-summary-font-color);
+    font-size: 14px;
+  }
+
+  .published-posts .post-date {
+    color: var(--post-summary-font-color);
+    font-size: 10px;
+  }
+
+  .published-posts .post-comment a {
+    font-size: 11px;
+    color: var(--custom-deep-purple);
+    font-weight: bold;
+    transition: all ease-in 0.3s;
+  }
+
+  .published-posts .post-comment a:hover {
+    color: #471aa1;
+    text-decoration: none;
+    transition: all ease-in 0.3s;
+  }
+
+  .published-posts .post-item:after {
+    content: "";
+    display: block;
+    position: relative;
+    width: 120%;
+    border-bottom: 1px solid #ebebeb;
+  }
+
+
+  /*MEDIA QUERIES*/
+  @media screen and (max-width: 700px) {
+    .published-posts .post-item:after {
+      content: "";
+      display: block;
+      position: relative;
+      width: 90%;
+      border-bottom: 1px solid #ebebeb;
+    }
+
+    .published-posts .nav-bar:after {
+      content: "";
+      display: block;
+      position: relative;
+      width: 90%;
+      border-bottom: 1px solid #a4a4a4;
+      margin-left: 1em;
+    }
+
+  }

@@ -1,16 +1,122 @@
-<!-- add header and footer templates here using twig -->
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Ziki</title>
-  </head>
+{% set title = "Timeline"%} {% extends 'layout.html' %} {% block page_content %}
+      <!-- Page Content section -->
+      <div id="content">
+        <!-- editor -->
+        <div class="row">
+          <div class="col-12">
+            <!-- <div id="editor"></div> -->
+          </div>
+        </div>
 
-  <body>
-    <ul>
-      {% for item in ziki %}
-      <li>{{ item.name }}</li>
-      {% endfor %}
-    </ul>
-  </body>
-</html>
+        <!-- Feed listing -->
+        <div class="row">
+          <div class="col-12">
+            <div class="row pt-4 pb-4">
+              <div class="col-2 col-sm-2 text-right">
+                <img src="/resources/themes/ghost/assets/img/active.jpg" alt="ziki logo" class=" blogger-image" />
+              </div>
+              <div class="col-9 col-sm-9">
+                <div class="row second">
+                  <div class="col-12">
+                    <h6 class="purple"><b>2nd April 2019</b></h6>
+                    <h3><b>What i think of Donald Golver's Video</b></h3>
+                    <p>Lorem Ipsum is a dummy text used for things like this, i am actually typing this because i feel too lazy to get the dummy text from google because i feel too lazy to get the dummy text from google.. </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6">Author's Name</div>
+                  <div class="col-6 text-right">Comment</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row pt-4 pb-4">
+              <div class="col-2 col-sm-2 text-right">
+                <img src="/resources/themes/ghost/assets/img/active.jpg" alt="ziki logo" class="img-fluid rounded-circle blogger-image" />
+              </div>
+              <div class="col-9 col-sm-9">
+                <div class="row second">
+                  <div class="col-12">
+                    <h6 class="purple"><b>2nd April 2019</b></h6>
+                    <h3><b>What i think of Donald Golver's Video</b></h3>
+                    <div class="row">
+                      <div class="col-12">
+                        <img src="/resources/themes/ghost/assets/img/travis.jpg" alt="ziki logo" class="img-fluid" />
+                      </div>
+                    </div>
+                    <p>Lorem Ipsum is a dummy text used for things like this, i am actually typing this because i feel too lazy to get the dummy text from google because i feel too lazy to get the dummy text from google.. </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6">Author's Name</div>
+                  <div class="col-6 text-right">Comment</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row pt-4 pb-4">
+              <div class="col-2 col-sm-2 text-right">
+                <img src="/resources/themes/ghost/assets/img/active.jpg" alt="ziki logo" class="img-fluid rounded-circle blogger-image" />
+              </div>
+              <div class="col-9 col-sm-9">
+                <div class="row second">
+                  <div class="col-12">
+                    <h6 class="purple"><b>2nd April 2019</b></h6>
+                    <h3><b>What i think of Donald Golver's Video</b></h3>
+                    <p>Lorem Ipsum is a dummy text used for things like this, i am actually typing this because i feel too lazy to get the dummy text from google because i feel too lazy to get the dummy text from google.. </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6">Author's Name</div>
+                  <div class="col-6 text-right">Comment</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row pt-4 pb-4">
+              <div class="col-2 col-sm-2 text-right">
+                <img src="/resources/themes/ghost/assets/img/active.jpg" alt="ziki logo" class="img-fluid rounded-circle blogger-image" />
+              </div>
+              <div class="col-9 col-sm-9">
+                <div class="row second">
+                  <div class="col-12">
+                    <h6 class="purple"><b>2nd April 2019</b></h6>
+                    <h3><b>What i think of Donald Golver's Video</b></h3>
+                    <p>Lorem Ipsum is a dummy text used for things like this, i am actually typing this because i feel too lazy to get the dummy text from google because i feel too lazy to get the dummy text from google.. </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6">Author's Name</div>
+                  <div class="col-6 text-right">Comment</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row pt-4 pb-4">
+              <div class="col-2 col-sm-2 text-right">
+                <img src="/resources/themes/ghost/assets/img/active.jpg" alt="ziki logo" class="img-fluid rounded-circle blogger-image" />
+              </div>
+              <div class="col-9 col-sm-9">
+                <div class="row second">
+                  <div class="col-12">
+                    <h6 class="purple"><b>2nd April 2019</b></h6>
+                    <h3><b>What i think of Donald Golver's Video</b></h3>
+                    <p>Lorem Ipsum is a dummy text used for things like this, i am actually typing this because i feel too lazy to get the dummy text from google because i feel too lazy to get the dummy text from google.. </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6">Author's Name</div>
+                  <div class="col-6 text-right">Comment</div>
+                </div>
+              </div>
+            </div>
+            
+
+          </div>
+        </div>
+        <!-- Feed section ends here -->
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock page_content %}

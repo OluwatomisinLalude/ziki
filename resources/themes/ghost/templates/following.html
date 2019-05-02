@@ -1,0 +1,460 @@
+{% set title = "Following"%}
+{% extends 'layout.html' %} {% block page_content%}
+
+<!-- content goes here -->
+<style>
+
+.nav-item .navbar-link.active {
+	border-bottom: 2px solid #280966;
+	padding-bottom: 1em;
+ }
+ 
+ .nav-item {
+	list-style-type: none;
+	font-family: Lato;
+ }
+
+.nav-item a {
+	color: #5c5c5c;
+	-webkit-transition: all ease-in .3s;
+	transition: all ease-in .3s;
+	font-size: 20px;
+	text-transform: uppercase;
+}
+
+.nav-item a:hover {
+	color: #280a66;
+	text-decoration: none;
+	-webkit-transition: all ease-in .3s;
+	transition: all ease-in .3s;
+ }
+
+.nav-item a .active {
+	color: #280a66 !important;
+	font-weight: bold;
+}
+
+.following .post-detail {
+	width: 45vw;
+	font-size: 16px;
+}
+
+.following .post-author {
+	font-size: 22px;
+}
+
+.following .btn {
+  border: 1px solid #280a66;
+  border-radius: 2px;
+  background: #280a66;
+  font-weight: bold;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.following .following-area {
+	margin: -4em -2em 0 0;
+}
+
+.following .max-width {
+	border-radius: 50%;
+	width: 70px;
+	height: 70px;
+}
+
+.following .following-box {
+	margin-top: -0.8em;
+}
+
+@media screen and (max-width: 600px) {
+	.nav-item a {
+		font-size: 16px;
+	}
+	
+	.following .max-width {
+		display: none !important;
+	}
+
+	.following .post-detail {
+		width: 60vw;
+		font-size: 12px;
+	}
+	
+	.following .btn {
+		width: 80px !important;
+		height: 30px;
+		font-size: 10px !important;
+		text-align: center;
+	}
+	
+	.following .following-button {
+	margin: -13.5em 1em 0 0!important;
+	}
+	
+	.following .following-area {
+		margin: 0 !important;
+	}
+	
+	.following .following-box {
+	margin-top: 2em !important;
+	}
+	
+	.following .post-author {
+	font-size: 20px;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.nav-item a {
+		font-size: 18px;
+	}
+	
+	.following .max-width {
+		display: block;
+		width: 60px;
+		height: 60px;
+		margin: 0 0 0 -3em !important;
+	}
+
+	.following .post-detail {
+		width: 70vw !important;
+		font-size: 14px;
+	}
+	
+	.following .btn {
+		width: 110px;
+		height: 30px;
+		font-size: 12px;
+		text-align: center;
+	}
+	
+	.following .following-button {
+	margin: -7em 4em 0 0;
+	}
+	
+	.following .following-area {
+		margin: 0 !important;
+	}
+	
+	.following .following-box {
+	margin-top: -1em !important;
+	}
+}
+</style>
+
+<body>
+	<div class="container-fluid following">
+		<div class="row"> 
+			<div class="col-12 col-sm-3">
+				<!--Sidebar-->
+			</div>
+			<!--Navbar-->
+			<div class="col-12 col-sm-9">
+				<div class="row col-sm-10 mt-3">
+					{% set navigation = [
+						{'href': 'followers', 'caption': 'Followers'},
+						{'href': 'following', 'caption': 'Following'}
+						]
+					%}
+					{% include "navtabs.html" with {'current_page': 'following'} %}
+				</div>
+				
+				<!--Following Content-->
+					<div class="row mt-5">
+						<div class="col-12">
+							<div class="row pt-3 pb-4 following-box">
+								<div class="col-1 col-sm-1"><img class="max-width" src="resources/themes/ghost/assets/img/Passport.png" alt="follower's-image"></div>
+								<div class="col-10 col-sm-9">
+									<div>
+										<h5 class="post-author font-weight-bold">Tomisin Lalude</h5>
+										<p class="post-detail">
+											Proud Yoruba Girl with Big dreams | Fashion Blogger | Female PR | Black and Beautiful | DM is open 
+											if you follow back
+										</p>
+									</div>
+									<div class="following-area d-flex justify-content-end">
+										<button type="button" class="following-button btn text-nowrap mb-3">
+											Following
+										</button>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row pt-4 pb-4 following-box">
+								<div class="col-1 col-sm-1"><img class="max-width" src="resources/themes/ghost/assets/img/Passport.png" alt="follower's-image"></div>
+								<div class="col-10 col-md-9">
+									<div>
+										<h5 class="post-author font-weight-bold">Tomisin Lalude</h5>
+										<p class="post-detail">
+											Proud Yoruba Girl with Big dreams | Fashion Blogger | Female PR | Black and Beautiful | DM is open 
+											if you follow back
+										</p>
+									</div>
+									<div class="following-area d-flex justify-content-end">
+										<button type="button" class="following-button btn text-nowrap mb-3">
+											Following
+										</button>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row pt-4 pb-4 following-box">
+								<div class="col-1 col-sm-1"><img class="max-width" src="resources/themes/ghost/assets/img/Passport.png" alt="follower's-image"></div>
+								<div class="col-10 col-sm-9">
+									<div>
+										<h5 class="post-author font-weight-bold">Tomisin Lalude</h5>
+										<p class="post-detail">
+											Proud Yoruba Girl with Big dreams | Fashion Blogger | Female PR | Black and Beautiful | DM is open 
+											if you follow back
+										</p>
+									</div>
+									<div class="following-area d-flex justify-content-end">
+										<button type="button" class="following-button btn text-nowrap mb-3">
+											Following
+										</button>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row pt-4 pb-4 following-box">
+								<div class="col-1 col-sm-1"><img class="max-width" src="resources/themes/ghost/assets/img/Passport.png" alt="follower's-image"></div>
+								<div class="col-10 col-sm-9">
+									<div>
+										<h5 class="post-author font-weight-bold">Tomisin Lalude</h5>
+										<p class="post-detail">
+											Proud Yoruba Girl with Big dreams | Fashion Blogger | Female PR | Black and Beautiful | DM is open 
+											if you follow back
+										</p>
+									</div>
+									<div class="following-area d-flex justify-content-end">
+										<button type="button" class="following-button btn text-nowrap mb-3">
+											Following
+										</button>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row pt-4 pb-4 following-box">
+								<div class="col-1 col-sm-1"><img class="max-width" src="resources/themes/ghost/assets/img/Passport.png" alt="follower's-image"></div>
+								<div class="col-10 col-sm-9">
+									<div>
+										<h5 class="post-author font-weight-bold">Tomisin Lalude</h5>
+										<p class="post-detail">
+											Proud Yoruba Girl with Big dreams | Fashion Blogger | Female PR | Black and Beautiful | DM is open 
+											if you follow back
+										</p>
+									</div>
+									<div class="following-area d-flex justify-content-end">
+										<button type="button" class="following-button btn text-nowrap mb-3">
+											Following
+										</button>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row pt-4 pb-4 following-box">
+								<div class="col-1 col-sm-1"><img class="max-width" src="resources/themes/ghost/assets/img/Passport.png" alt="follower's-image"></div>
+								<div class="col-10 col-sm-9">
+									<div>
+										<h5 class="post-author font-weight-bold">Tomisin Lalude</h5>
+										<p class="post-detail">
+											Proud Yoruba Girl with Big dreams | Fashion Blogger | Female PR | Black and Beautiful | DM is open 
+											if you follow back
+										</p>
+									</div>
+									<div class="following-area d-flex justify-content-end">
+										<button type="button" class="following-button btn text-nowrap mb-3">
+											Following
+										</button>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row pt-4 pb-4 following-box">
+								<div class="col-1 col-sm-1"><img class="max-width" src="resources/themes/ghost/assets/img/Passport.png" alt="follower's-image"></div>
+								<div class="col-10 col-sm-9">
+									<div>
+										<h5 class="post-author font-weight-bold">Tomisin Lalude</h5>
+										<p class="post-detail">
+											Proud Yoruba Girl with Big dreams | Fashion Blogger | Female PR | Black and Beautiful | DM is open 
+											if you follow back
+										</p>
+									</div>
+									<div class="following-area d-flex justify-content-end">
+										<button type="button" class="following-button btn text-nowrap mb-3">
+											Following
+										</button>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row pt-4 pb-4 following-box">
+								<div class="col-1 col-sm-1"><img class="max-width" src="resources/themes/ghost/assets/img/Passport.png" alt="follower's-image"></div>
+								<div class="col-10 col-sm-9">
+									<div>
+										<h5 class="post-author font-weight-bold">Tomisin Lalude</h5>
+										<p class="post-detail">
+											Proud Yoruba Girl with Big dreams | Fashion Blogger | Female PR | Black and Beautiful | DM is open 
+											if you follow back
+										</p>
+									</div>
+									<div class="following-area d-flex justify-content-end">
+										<button type="button" class="following-button btn text-nowrap mb-3">
+											Following
+										</button>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row pt-4 pb-4 following-box">
+								<div class="col-1 col-sm-1"><img class="max-width" src="resources/themes/ghost/assets/img/Passport.png" alt="follower's-image"></div>
+								<div class="col-10 col-sm-9">
+									<div>
+										<h5 class="post-author font-weight-bold">Tomisin Lalude</h5>
+										<p class="post-detail">
+											Proud Yoruba Girl with Big dreams | Fashion Blogger | Female PR | Black and Beautiful | DM is open 
+											if you follow back
+										</p>
+									</div>
+									<div class="following-area d-flex justify-content-end">
+										<button type="button" class="following-button btn text-nowrap mb-3">
+											Following
+										</button>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row pt-4 pb-4 following-box">
+								<div class="col-1 col-sm-1"><img class="max-width" src="resources/themes/ghost/assets/img/Passport.png" alt="follower's-image"></div>
+								<div class="col-10 col-sm-9">
+									<div>
+										<h5 class="post-author font-weight-bold">Tomisin Lalude</h5>
+										<p class="post-detail">
+											Proud Yoruba Girl with Big dreams | Fashion Blogger | Female PR | Black and Beautiful | DM is open 
+											if you follow back
+										</p>
+									</div>
+									<div class="following-area d-flex justify-content-end">
+										<button type="button" class="following-button btn text-nowrap mb-3">
+											Following
+										</button>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row pt-4 pb-4 following-box">
+								<div class="col-1 col-sm-1"><img class="max-width" src="resources/themes/ghost/assets/img/Passport.png" alt="follower's-image"></div>
+								<div class="col-10 col-sm-9">
+									<div>
+										<h5 class="post-author font-weight-bold">Tomisin Lalude</h5>
+										<p class="post-detail">
+											Proud Yoruba Girl with Big dreams | Fashion Blogger | Female PR | Black and Beautiful | DM is open 
+											if you follow back
+										</p>
+									</div>
+									<div class="following-area d-flex justify-content-end">
+										<button type="button" class="following-button btn text-nowrap mb-3">
+											Following
+										</button>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row pt-4 pb-4 following-box">
+								<div class="col-1 col-sm-1"><img class="max-width" src="resources/themes/ghost/assets/img/Passport.png" alt="follower's-image"></div>
+								<div class="col-10 col-sm-9">
+									<div>
+										<h5 class="post-author font-weight-bold">Tomisin Lalude</h5>
+										<p class="post-detail">
+											Proud Yoruba Girl with Big dreams | Fashion Blogger | Female PR | Black and Beautiful | DM is open 
+											if you follow back
+										</p>
+									</div>
+									<div class="following-area d-flex justify-content-end">
+										<button type="button" class="following-button btn text-nowrap mb-3">
+											Following
+										</button>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row pt-4 pb-4 following-box">
+								<div class="col-1 col-sm-1"><img class="max-width" src="resources/themes/ghost/assets/img/Passport.png" alt="follower's-image"></div>
+								<div class="col-10 col-sm-9">
+									<div>
+										<h5 class="post-author font-weight-bold">Tomisin Lalude</h5>
+										<p class="post-detail">
+											Proud Yoruba Girl with Big dreams | Fashion Blogger | Female PR | Black and Beautiful | DM is open 
+											if you follow back
+										</p>
+									</div>
+									<div class="following-area d-flex justify-content-end">
+										<button type="button" class="following-button btn text-nowrap mb-3">
+											Following
+										</button>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row pt-4 pb-4 following-box">
+								<div class="col-1 col-sm-1"><img class="max-width" src="resources/themes/ghost/assets/img/Passport.png" alt="follower's-image"></div>
+								<div class="col-10 col-sm-9">
+									<div>
+										<h5 class="post-author font-weight-bold">Tomisin Lalude</h5>
+										<p class="post-detail">
+											Proud Yoruba Girl with Big dreams | Fashion Blogger | Female PR | Black and Beautiful | DM is open 
+											if you follow back
+										</p>
+									</div>
+									<div class="following-area d-flex justify-content-end">
+										<button type="button" class="following-button btn text-nowrap mb-3">
+											Following
+										</button>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row pt-4 pb-4 following-box">
+								<div class="col-1 col-sm-1"><img class="max-width" src="resources/themes/ghost/assets/img/Passport.png" alt="follower's-image"></div>
+								<div class="col-10 col-sm-9">
+									<div>
+										<h5 class="post-author font-weight-bold">Tomisin Lalude</h5>
+										<p class="post-detail">
+											Proud Yoruba Girl with Big dreams | Fashion Blogger | Female PR | Black and Beautiful | DM is open 
+											if you follow back
+										</p>
+									</div>
+									<div class="following-area d-flex justify-content-end">
+										<button type="button" class="following-button btn text-nowrap mb-3">
+											Following
+										</button>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row pt-4 pb-4 following-box">
+								<div class="col-1 col-sm-1"><img class="max-width" src="resources/themes/ghost/assets/img/Passport.png" alt="follower's-image"></div>
+								<div class="col-10 col-sm-9">
+									<div>
+										<h5 class="post-author font-weight-bold">Tomisin Lalude</h5>
+										<p class="post-detail">
+											Proud Yoruba Girl with Big dreams | Fashion Blogger | Female PR | Black and Beautiful | DM is open 
+											if you follow back
+										</p>
+									</div>
+									<div class="following-area d-flex justify-content-end">
+										<button type="button" class="following-button btn text-nowrap mb-3">
+											Following
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock page_content %}

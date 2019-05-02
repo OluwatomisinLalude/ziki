@@ -1,0 +1,118 @@
+{% set title = "Profile"%}
+{% extends 'layout.html' %} {% block page_content%}
+
+<!-- content goes here -->
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-3 offset-lg-4 offset-md-4 offset-sm-12 offset-xs-12">
+
+      {% set navigation = [
+        {'href': 'settings', 'caption': 'Settings'},
+        {'href': 'profile', 'caption': 'Profile'},
+        {'href': 'subscriptions', 'caption': 'Subscriptions'}
+        ]
+      %}
+
+      {% include "navtabs.html" with {'current_page': 'profile'} %}
+
+      <div class="row profile-main py-2">
+        <div class="col profile-content-area p-1 pb-5 mt-5 mr-3">
+          <div class="row d-flex flex-column px-0 pt-2 pb-5">
+            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 profile-dp-container">
+              <figure class="profile-dp-link mx-auto">
+                <input type="file" name="" id="imagefile" accept="image/*" />
+                <img src="{{settings.image}}" class="profile-dp d-block mx-auto rounded-circle" alt="profile avatar" accept="image/*">
+              </figure>
+            </div>
+            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+              <form class="pb-5">
+                <div class="form-group">
+                  <label for="fullName" class="font-weight-bold profile-edit-label d-none">Full Name</label>
+                  <input type="text" class="form-control" id="fullname" aria-describedby="fullname" value="{{settings.name}}" placeholder="Full Name">
+                </div>
+                <div class="form-group">
+                  <label for="shortbio" class="font-weight-bold profile-edit-label d-none">Short Bio</label>
+                  <textarea class="form-control" id="shortbio" placeholder="Short Bio" rows="3"></textarea>
+                </div>
+                <button type="submit"
+                  class="btn float-md-right profile-submit-btn text-white d-block mx-auto mt-3 text-upppercase">update</button>
+              </form>
+
+              <form class="pb-5 mt-5">
+                
+                <div class="form-group">
+                  <label for="about" class="font-weight-bold profile-edit-label">About Me</label>
+                  <textarea class="form-control" id="about" placeholder="About" rows="5"></textarea>
+                </div>
+                <button type="submit"
+                  class="btn float-md-right profile-submit-btn text-white d-block mx-auto mt-3 text-upppercase">update</button>
+              </form>
+
+              <form class="pb-5 mt-5">
+                
+                <div class="form-group">
+                  <label for="email" class="font-weight-bold profile-edit-label">Contact Email</label>
+                  <input class="form-control" type="email" id="email" placeholder="Email"/>
+                </div>
+                <button type="submit"
+                  class="btn float-md-right profile-submit-btn text-white d-block mx-auto mt-3 text-upppercase">update</button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <script>
+        // handle image upload
+        var defaultImagePath = '/resources/themes/ghost/assets/img/user-icon-placeholder.png';
+        var imageInput = document.getElementById('imagefile');
+        var editPic = document.querySelector('.profile-dp-link img');
+        var profilePic = document.querySelector('.profile-pic');
+
+        imageInput.addEventListener('change', function(){
+          var fileData = this.files[0],
+          fileType = fileData.type,
+          match = ["image/jpeg", "image/png", "image/jpg"];
+
+          if (match.indexOf(fileType) == -1) {
+            alert('Please select a valid image','warning');
+            return false;
+          }else{
+            var reader = new FileReader();
+            reader.onload = imageIsLoaded;
+            reader.readAsDataURL(this.files[0]);
+          }
+
+          //render image preview
+          function imageIsLoaded(e) {
+            editPic.setAttribute('src', e.target.result);
+            profilePic.setAttribute('src', e.target.result);
+            localStorage.setItem("profilepic", e.target.result); //save offline
+            //perform upload in background
+            handleUpload(fileData);
+          };
+
+        });
+
+        function handleUpload(fileData){
+          var formData = new FormData();
+          formData.append("image", fileData);
+          //call upload image api
+          fetch('/api/upload-image', {
+            method: 'POST',
+            body: formData
+          }).then(res => res.json()).then((res) => {
+            //use response to set profile image back
+            console.log(res);
+          }).catch((err) => {
+            alert(`Upload request failed : ${err.message}`);
+          });
+        }
+      </script>
+    </div>
+  </div>
+</div>
+
+
+{% endblock page_content %}

@@ -1,0 +1,204 @@
+{% set title = "Subscribers"%}
+{% extends 'layout.html' %} {% block page_content%}
+
+<!-- content goes here -->
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-sm-1"></div>
+        <div class="col-lg-11 col-md-8 col-sm-11 col-xs-11 mt-3">
+
+            {% include "navtabs.html" with {'current_page': 'subscribers'} %}
+
+            <div class="row profile-main py-2">
+                <div class="col subscription-content-area pb-5 mt-5 mr-3">
+
+                    <div class="px-3">
+                        <div class="subscription-content-header row d-flex align-items-center ">
+
+                            <div class="col-lg-4 col-md-4 col-sm-12">
+                                <p class="followed-text text-nowrap">You Subscribed to</p>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-12 search-area">
+                                <form action="post">
+                                    <div class="form-group has-search">
+                                        <span class="fa fa-search form-control-feedback ml-1"></span>
+                                        <input type="text" class="form-control form-control-no-border"
+                                            placeholder="Search">
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!--<div class="following-area">-->
+                            <div class="col-lg-4 col-md-4 col-sm-12 py-3">
+                                <button type="button" class="btn following-button text-nowrap mb-3" data-toggle="modal"
+                                    data-target="#add-subscription">
+                                    Add subscription
+                                </button>
+                            </div>
+
+                        </div>
+
+                        <div class="row justify-content-center my-3">
+
+                            <div class="col-12 col-sm-10 py-1 following-content">
+
+                                <div class="d-flex align-items-center px-3 subscribe-box-area justify-content-between">
+
+                                    <div class=" author-image  p-2">
+                                        <img class="max-width"
+                                            src="resources/themes/ghost/assets/img/Ellipse (1).png" />
+                                    </div>
+
+                                    <div class="py-4  post-sm-content">
+                                        <div class="px-2">
+                                            <h5 class="post-author font-weight-bold">Mercy Ikpe</h5>
+                                            <p class="post-detail">
+                                                Storyteller | Combat wounded veteran | Designer | https://ziki.hng.tech
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class=" p-2  not-following-area">
+                                        <button type="button" class="following-button btn" data-toggle="modal" data-target="#subscribe-here">
+                                            Follow
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center my-3">
+
+                            <div class="col-12 col-sm-10 py-1 following-content">
+
+                                <div class="d-flex align-items-center px-3 subscribe-box-area justify-content-between">
+
+                                    <div class=" author-image  p-2">
+                                        <img class="max-width"
+                                            src="resources/themes/ghost/assets/img/Ellipse (1).png" />
+                                    </div>
+
+                                    <div class="py-4  post-sm-content">
+                                        <div class="px-2">
+                                            <h5 class="post-author font-weight-bold">Mercy Ikpe</h5>
+                                            <p class="post-detail">
+                                                Storyteller | Combat wounded veteran | Designer | https://ziki.hng.tech
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class=" p-2  not-following-area">
+                                        <button type="button" class="following-button btn" data-toggle="modal" data-target="#subscribe-here">
+                                            Follow
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center my-3">
+
+                            <div class="col-12 col-sm-10 py-1 following-content">
+
+                                <div class="d-flex align-items-center px-3 subscribe-box-area justify-content-between">
+
+                                    <div class=" author-image  p-2">
+                                        <img class="max-width"
+                                            src="resources/themes/ghost/assets/img/Ellipse (1).png" />
+                                    </div>
+
+                                    <div class="py-4  post-sm-content">
+                                        <div class="px-2">
+                                            <h5 class="post-author font-weight-bold">Mercy Ikpe</h5>
+                                            <p class="post-detail">
+                                                Storyteller | Combat wounded veteran | Designer | https://ziki.hng.tech
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class=" p-2  not-following-area">
+                                        <button type="button" class="not-following-button btn" data-toggle="modal" data-target="#unsubscribe-here">
+                                            Following
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center my-3">
+
+                            <div class="col-12 col-sm-10 py-1 following-content">
+
+                                <div class="d-flex align-items-center px-3 subscribe-box-area justify-content-between">
+
+                                    <div class=" author-image  p-2">
+                                        <img class="max-width"
+                                            src="resources/themes/ghost/assets/img/Ellipse (1).png" />
+                                    </div>
+
+                                    <div class="py-4  post-sm-content">
+                                        <div class="px-2">
+                                            <h5 class="post-author font-weight-bold">Mercy Ikpe</h5>
+                                            <p class="post-detail">
+                                                Storyteller | Combat wounded veteran | Designer | https://ziki.hng.tech
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class=" p-2  not-following-area">
+                                        <button type="button" class="not-following-button btn" data-toggle="modal" data-target="#unsubscribe-here">
+                                            Following
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center my-3">
+
+                            <div class="col-12 col-sm-10 py-1 following-content">
+
+                                <div class="d-flex align-items-center px-3 subscribe-box-area justify-content-between">
+
+                                    <div class=" author-image  p-2">
+                                        <img class="max-width"
+                                            src="resources/themes/ghost/assets/img/Ellipse (1).png" />
+                                    </div>
+
+                                    <div class="py-4  post-sm-content">
+                                        <div class="px-2">
+                                            <h5 class="post-author font-weight-bold">Mercy Ikpe</h5>
+                                            <p class="post-detail">
+                                                Storyteller | Combat wounded veteran | Designer | https://ziki.hng.tech
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class=" p-2  not-following-area">
+                                        <button type="button" class="following-button btn" data-toggle="modal" data-target="#subscribe-here">
+                                            Follow
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock page_content %}

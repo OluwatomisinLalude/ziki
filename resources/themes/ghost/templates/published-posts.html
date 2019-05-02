@@ -1,0 +1,197 @@
+{% set title = "Published Posts"%}
+{% extends 'layout.html' %} {% block page_content %}
+
+<style>
+  .published-posts ul {
+    list-style: none;
+  }
+
+  .nav-item .navbar-link.active {
+    border-top: 0 solid #280966 !important;
+    border-right: 0 solid #280966 !important;
+    border-left: 0 solid #280966 !important;
+    border-bottom:4px solid #280966 !important;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+  }
+
+  .published-posts .nav-item a {
+    color: #5c5c5c;
+    -webkit-transition: all ease-in .3s;
+    transition: all ease-in .3s;
+    font-size: 20px;
+  }
+
+  .published-posts .nav-item a:hover {
+    color: #280a66;
+    text-decoration: none;
+    -webkit-transition: all ease-in .3s;
+    transition: all ease-in .3s;
+  }
+
+  .published-posts .nav-item a .active {
+    color: #280a66;
+
+  }
+
+
+  .published-posts .nav-bar {
+    border-bottom: 1px solid #a4a4a4;
+  }
+
+  .published-posts .post-title a {
+    color: #1b1b1b;
+    -webkit-transition: all ease-in .3s;
+    transition: all ease-in .3s;
+  }
+
+  .published-posts .post-title a:hover {
+    color: #280a66;
+    text-decoration: none;
+    -webkit-transition: all ease-in .3s;
+    transition: all ease-in .3s;
+  }
+
+  .published-posts .post-author {
+    font-weight: 700;
+    color: #280a66;
+  }
+
+  .published-posts .post-content-summary {
+    color: #717171;
+    font-size: 14px;
+  }
+
+  .published-posts .post-date {
+    color: #717171;
+    font-size: 10px;
+  }
+
+  .published-posts .post-comment a {
+    font-size: 11px;
+    color: #280a66;
+    font-weight: 700;
+    -webkit-transition: all ease-in .3s;
+    transition: all ease-in .3s;
+  }
+
+  .published-posts .post-comment a:hover {
+    color: #471aa1;
+    text-decoration: none;
+    -webkit-transition: all ease-in .3s;
+    transition: all ease-in .3s;
+  }
+
+  .published-posts .post-item:after {
+    content: "";
+    display: block;
+    position: relative;
+    width: 120%;
+    border-bottom: 1px solid #ebebeb;
+  }
+
+  .published-posts .logo-on-page {
+    position: relative;
+    top: -0.5em;
+  }
+
+  @media screen and (max-width:700px) {
+    .published-posts .post-item:after {
+      content: "";
+      display: block;
+      position: relative;
+      width: 90%;
+      border-bottom: 1px solid #ebebeb;
+    }
+
+  }
+</style>
+
+<div class="container-fluid published-posts">
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 the-sidebar">
+
+    </div>
+
+
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-5 pt-2">
+        <div class="nav-bar row mt-3">
+            <ul class="col-12 d-flex justify-content-start mb-0 pb-0">
+              <li class="nav-item mr-5 pb-0 mb-0">
+                <a href="#" class="navbar-link active">Published</a>
+              </li>
+              <li class="nav-item mr-5 pb-0 mb-0"><a href="/drafts" class="navbar-link">Drafts</a></li>
+            </ul>
+          </div>
+
+      <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 mt-5">
+        <div class="post-item mt-3">
+          <p class="post-author">Samaila Bala</p>
+
+          <h4 class="post-title">
+            <a href="#">
+              Looking For Where To Spend Christmas in the comfort of your home
+            </a>
+          </h4>
+
+          <p class="post-content-summary">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore , Lorem ipsum dolor
+            sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore
+          </p>
+          <div class="row">
+            <p class="post-date mb-4 col-6 d-flex justify-content-start">2nd April, 2019 : 04:30</p>
+            <p class="post-comment mb-4 col-6 d-flex justify-content-end"> <a href="">Comment</a> </p>
+          </div>
+        </div>
+
+        <div class="post-item mt-3">
+          <p class="post-author">Samaila Bala</p>
+
+          <h4 class="post-title">
+            <a href="#">
+              Looking For Where To Spend Christmas in the comfort of your home
+            </a>
+          </h4>
+
+          <p class="post-content-summary">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore , Lorem ipsum dolor
+            sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore
+          </p>
+          <div class="row">
+            <p class="post-date mb-4 col-6 d-flex justify-content-start">2nd April, 2019 : 04:30</p>
+            <p class="post-comment mb-4 col-6 d-flex justify-content-end"> <a href="">Comment</a> </p>
+          </div>
+        </div>
+
+        <div class="post-item mt-3">
+          <p class="post-author">Samaila Bala</p>
+
+          <h4 class="post-title">
+            <a href="#">
+              Looking For Where To Spend Christmas in the comfort of your home
+            </a>
+          </h4>
+
+          <p class="post-content-summary">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore , Lorem ipsum dolor
+            sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore
+          </p>
+          <div class="row">
+            <p class="post-date mb-4 col-6 d-flex justify-content-start">2nd April, 2019 : 04:30</p>
+            <p class="post-comment mb-4 col-6 d-flex justify-content-end"> <a href="">Comment</a> </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- using semantic tags -->
+</div>
+
+{% endblock page_content %}

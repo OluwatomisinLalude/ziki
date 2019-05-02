@@ -1,0 +1,361 @@
+% set title = "Microblog"%} {% extends 'layout.html' %} {% block page_content %}
+<style>
+    :root {
+        --primary-color: #280a66;
+        --mb-text-color: #7a7a7a;
+        --mb-title: #000000;
+    }
+
+    .mb-editor-area {
+        background: #f5f5f5;
+        border-radius: 5px;
+    }
+
+    .mb-editor {
+        background: #ffffff;
+        border-radius: 5px;
+    }
+
+    .mb-textarea {
+        border: none;
+        font-size: 18px;
+        line-height: 22px;
+        resize: none;
+    }
+
+    .mb-textarea::placeholder {
+        font-weight: bold;
+
+    }
+
+    .mb-textarea:focus {
+        outline: none !important;
+        border: 0;
+        box-shadow: none;
+    }
+
+    .mb-icon-link {
+        color: #000000;
+    }
+
+    .mb-icon-link:hover {
+        color: #000000;
+    }
+
+    .icon-audio,
+    .icon-photo,
+    .icon-video {
+        cursor: pointer;
+    }
+
+    .icon-audio {
+        color: #C61639;
+    }
+
+    .icon-photo {
+        color: #280a66;
+    }
+
+    .icon-video {
+        color: #6C63FF;
+    }
+
+    .btn-mb-post,
+    .btn-mb-submit {
+        background: #3B0E75;
+        color: #ffffff;
+        border-radius: 5px;
+        border: none;
+
+    }
+
+    .btn-mb-post:hover,
+    .btn-mb-submit:hover,
+    .btn-mb-cancel {
+        background: #ffffff;
+        color: #3B0E75;
+        border-radius: 5px;
+        border: 1px solid #3B0E75;
+
+    }
+
+    .mb-content {
+        color: var(--mb-text-color);
+        font-size: 18px;
+        line-height: 140%;
+    }
+
+    .mb-image {
+        object-fit: none;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+    }
+
+
+
+    .mb-title {
+        color: #000000;
+        line-height: 1.3em;
+        font-size: 24px;
+    }
+
+    .mb-title:hover {
+        color: #000000;
+        text-decoration: underline;
+    }
+
+    .mb-post-time {
+        color: #000000;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .mb-reply {
+        color: var(--primary-color);
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+    }
+
+    .mb-reply:hover {
+        color: var(--primary-color);
+        text-decoration: underline;
+    }
+
+    .mb-pagination a {
+        color: var(--primary-color);
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .mb-pagination a:hover {
+        color: var(--primary-color);
+        text-decoration: underline;
+    }
+
+    /* Media Query */
+    @media screen and (max-width: 768px) {
+        .mb-editor {
+            flex-direction: column-reverse;
+            padding: 1rem 0.5rem !important;
+            align-items: flex-start !important;
+        }
+
+        .textarea-control {
+            align-items: flex-start !important;
+            margin-top: 1rem !important;
+        }
+
+        .mb-textarea,
+        .mb-audio,
+        .mb-photo,
+        .mb-video {
+            margin: 0 0 0 4px !important;
+        }
+
+        .mb-textarea {
+            font-size: 14px;
+            padding: 0 !important;
+        }
+
+        .reply-form {
+            width: 100% !important;
+        }
+    }
+</style>
+<div id="content">
+    .
+    <!-- Page content goes here -->
+
+
+    <div class="container-fluid published-posts">
+        <div class="row">
+
+
+
+            <div class="col-12 col-sm-9 mt-5 pt-2 px-3">
+                <div class="container-fluid w-75 mx-auto my-5">
+                    <!-- Micro Blog Editor Starts Here -->
+                    <div class="row mb-editor-area p-4">
+                        <div class="mb-editor p-2 d-flex align-items-center flex-nowrap w-100">
+                            <div class="d-flex w-100 align-items-center textarea-control">
+                                <textarea name="" id="mbTextarea" class="form-control mx-2 mb-textarea" maxlength="140"
+                                    rows="3" placeholder="What's Happening?"></textarea>
+                                <input type="file" id="upload" class="d-none">
+                                <div class="character-count mx-2" id="charCount">0</div>
+                            </div>
+                            <div class="d-flex icon-area">
+                                <div class="mb-audio  text-center mx-2"> <a href="" id=""
+                                        class="mb-icon-link upload_link">
+                                        <i class="fas fa-microphone-alt icon-audio d-block mx-auto"></i>
+                                        <span> Audio </span> </a>
+                                </div>
+                                <div class="mb-photo text-center mx-2"> <a href="" id=""
+                                        class="mb-icon-link upload_link">
+                                        <i class="fas fa-camera d-block icon-photo mx-auto"></i>
+                                        <span> Photo </span></a>
+                                </div>
+                                <div class="mb-video text-center mx-2"> <a href="" id=""
+                                        class="mb-icon-link upload_link">
+                                        <i class="fas fa-video d-block icon-video mx-auto"></i>
+                                        <span> Video </span> </a></div>
+
+                            </div>
+                        </div>
+                        <div class="post-btn mt-3 text-right w-100">
+                            <button class="btn btn-mb-post text-center float-right px-5 d-block">Post</button>
+                        </div>
+                    </div>
+                    <!-- Micro Blog Editor Ends Here -->
+                    <!-- Micro Blog Posts Starts Here -->
+                    <div class="row mb-section">
+                        <div class="mb-summary d-flex my-4 mt-5">
+                            <div class="mr-1"><img src="/resources/themes/ghost/assets/img/tsr-logo-img.png"
+                                    class="mb-image" alt="mb-1">
+                            </div>
+                            <div class="mb-content">
+                                <p class="mb-0">The misgivings of life is not extraordinary, don’t you want to fly away.
+                                    Visitingabia
+                                    state was a blessing, i could not have asked for anything better. </p>
+                                <span class="mb-post-time">10:00pm</span> <span class="mb-reply ml-3 font-weight-bold"
+                                    id="replyLink">Reply</span>
+                                <div class="reply-form w-75 " id="replyForm">
+                                    <div class="form-group">
+                                        <textarea name="" id="" rows="4" class="form-control"></textarea>
+                                    </div>
+                                    <div class="form-group float-right flex-nowrap">
+                                        <button class="btn btn-mb-cancel" id="cancelBtn">Cancel</button> <button
+                                            class="btn btn-mb-submit">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-summary d-flex my-4">
+                            <div class="mr-1"><img src="/resources/themes/ghost/assets/img/tsr-logo-img.png"
+                                    class="mb-image" alt="mb-1">
+                            </div>
+                            <div class="mb-content">
+                                <p class="mb-0">The misgivings of life is not extraordinary, don’t you want to fly away.
+                                    Visitingabia
+                                    state was a blessing, i could not have asked for anything better. </p>
+                                <span class="mb-post-time">10:00pm</span> <span class="mb-reply ml-3 font-weight-bold"
+                                    id="replyLink">Reply</span>
+                            </div>
+                        </div>
+                        <div class="mb-summary d-flex my-4">
+                            <div class="mr-1"><img src="/resources/themes/ghost/assets/img/tsr-logo-img.png"
+                                    class="mb-image" alt="mb-1">
+                            </div>
+                            <div class="mb-content">
+                                <p class="mb-0">The misgivings of life is not extraordinary, don’t you want to fly away.
+                                    Visitingabia
+                                    state was a blessing, i could not have asked for anything better. </p>
+                                <span class="mb-post-time">10:00pm</span> <span class="mb-reply ml-3 font-weight-bold"
+                                    id="replyLink">Reply</span>
+                            </div>
+                        </div>
+                        <div class="mb-summary d-flex my-4">
+                            <div class="mr-1"><img src="/resources/themes/ghost/assets/img/tsr-logo-img.png"
+                                    class="mb-image" alt="mb-1">
+                            </div>
+                            <div class="mb-content">
+                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                    tempor incididunt
+                                    <img src="/resources/themes/ghost/assets/img/mb-3.png" alt=""
+                                        class="d-block img-fluid my-2">
+                                </p>
+                                <span class="mb-post-time">10:00pm</span> <span class="mb-reply ml-3 font-weight-bold"
+                                    id="replyLink">Reply</span>
+                            </div>
+                        </div>
+                        <div class="mb-summary d-flex my-4">
+                            <div class="mr-1"><img src="/resources/themes/ghost/assets/img/tsr-logo-img.png"
+                                    class="mb-image" alt="mb-1">
+                            </div>
+                            <div class="mb-content">
+                                <p class="mb-0">The misgivings of life is not extraordinary, don’t you want to fly away.
+                                    Visitingabia
+                                    state was a blessing, i could not have asked for anything better. </p>
+                                <span class="mb-post-time">10:00pm</span> <span class="mb-reply ml-3 font-weight-bold"
+                                    id="replyLink">Reply</span>
+                            </div>
+                        </div>
+                        <div class="mb-summary d-flex my-4">
+                            <div class="mr-1"><img src="/resources/themes/ghost/assets/img/tsr-logo-img.png"
+                                    class="mb-image" alt="mb-1">
+                            </div>
+                            <div class="mb-content">
+                                <p class="mb-0">The misgivings of life is not extraordinary, don’t you want to fly away.
+                                    Visitingabia
+                                    state was a blessing, i could not have asked for anything better. </p>
+                                <span class="mb-post-time">10:00pm</span> <span class="mb-reply ml-3 font-weight-bold"
+                                    id="replyLink">Reply</span>
+                            </div>
+                        </div>
+                        <div class="mb-summary d-flex my-4">
+                            <div class="mr-1"><img src="/resources/themes/ghost/assets/img/tsr-logo-img.png"
+                                    class="mb-image" alt="mb-1">
+                            </div>
+                            <div class="mb-content">
+                                <p class="mb-0">The misgivings of life is not extraordinary, don’t you want to fly away.
+                                    Visitingabia
+                                    state was a blessing, i could not have asked for anything better. </p>
+                                <span class="mb-post-time">10:00pm</span> <span class="mb-reply ml-3 font-weight-bold"
+                                    id="replyLink">Reply</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="mb-pagination mt-5">
+                        <a href="">Next>>></a> <a href="" class="d-none">
+                            <<< Prev </a> </div> <!--Micro Blog Posts Ends here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+            const replyLink = document.querySelector("#replyLink");
+            const replyForm = document.querySelector("#replyForm");
+            const cancelBtn = document.querySelector("#cancelBtn");
+            const mbTextarea = document.querySelector("#mbTextarea");
+            const current = document.querySelector("#charCount");
+            replyForm.style.display = "none";
+            // Toogle reply form
+            replyLink.addEventListener('click', () => {
+                replyForm.style.display = "block";
+            })
+            cancelBtn.addEventListener('click', () => {
+                replyForm.style.display = "none";
+            });
+
+            // Count characters of post box
+            mbTextarea.addEventListener('keyup', () => {
+                const totalText = mbTextarea.value.length;
+                if (totalText > 100) {
+                    current.style.color = "red"
+                } else {
+                    current.style.color = "black"
+                }
+                return current.textContent = totalText;
+            });
+
+            // Open file upload once post-icons are clicked
+            jQuery(function ($) {
+                $(function () {
+                    $(".upload_link").on('click', function (e) {
+                        e.preventDefault();
+                        $("#upload:hidden").trigger('click');
+                    });
+                });
+            });
+
+        </script>
+
+        .
+    </div>
+</div>
+</div>
+</div>
+{% endblock page_content %}

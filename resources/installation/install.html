@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>install Lucid</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:400,700,900"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="resources/installation/assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <style>
+    </style>
+  </head>
+  <body>
+    <div class="d-flex flex-column container-fluid">
+      <a class="logo" href="https://ziki.hng.tech">
+        <img
+          src="https://res.cloudinary.com/softcom/image/upload/v1556381807/softcom%20pen/Vector.png"
+          alt="ziki logo"
+          class=""
+        />
+      </a>
+      <h2 style="text-align:center">Lucid</h2>
+      <div class="main mt-4">
+        <h3 class="welcome-text mt-4">Welcome to Lucid Installation guide</h3>
+        <h6 class="description-text mb-4">
+          Setting up Lucid on your domain is a very easy process! Fill in the
+          information below and your site will be up and running with lucid in
+          no time
+        </h6>
+        <form action="/setup" method="POST" id="installForm">
+          <!-- step one starts here -->
+          <div class="step-form">
+            <div class="indicator d-flex justify-content-around">
+              <!-- this would be set dynamically later on -->
+              <span class="purple">1</span>
+              <p class="purple">Pofile Information</p>
+              <span class="purple">1 of 2</span>
+            </div>
+            <!-- this too -->
+            <p>This contains your admin information and details</p>
+            <div
+              class="d-flex flex-wrap justify-content-between names mt-4 mb-4"
+            >
+              <input
+                type="text"
+                name="firstname"
+                id="firstname"
+                placeholder="FirstName"
+              />
+              <input
+                type="text"
+                name="lastname"
+                id="lastname"
+                placeholder="LastName"
+              />
+            </div>
+
+            <div
+              class="d-flex flex-wrap justify-content-between username-role mt-4 mb-4"
+            >
+              <input
+                type="text"
+                name="username"
+                id="username"
+                placeholder="UserName"
+              />
+              <select name="role" id="role">
+                <option value="Site Administrator">Site Administrator</option>
+              </select>
+            </div>
+            <div class="d-flex mt-4 mb-4">
+              <input
+                class="e-mail"
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email Address"
+              />
+            </div>
+            <div class="mt-5 mb-5 divider d-flex align-items-center">
+              <span>OR</span>
+            </div>
+            <div class="d-flex justify-content-between">
+              <div
+                class="facebook-auth social-auth d-flex justify-content-between"
+              >
+                <i class="fab fa-facebook-square"></i>
+                <a class="btn" href="https://auth.techteel.com/login/facebook?type=setup&url={{host}}" class="m-auto">
+                  Sign Up with Facebook
+                </a>
+              </div>
+              <div
+                class="google-auth social-auth d-flex justify-content-between"
+              >
+                <i class="fab fa-google"></i>
+                <a class="btn" href="https://auth.techteel.com/login/google?type=setup&url={{host}}" class="m-auto">
+                  Sign Up with Google
+                </a>
+              </div>
+            </div>
+            <div class="d-flex justify-content-around mt-5 mb-5">
+              <button id="nextButton" class="next-button">Next <span class="arrow"><i class="fas fa-arrow-right"></i></span></button>
+            </div>
+          </div>
+
+          <!-- step 2 starts here -->
+
+          <div class="step-form">
+            <div class="indicator d-flex justify-content-around">
+                <!-- this would be set dynamically later on -->
+                <span class="purple">2</span>
+                <p class="purple">Site Information</p>
+                <span class="purple">2 of 2</span>
+            </div>
+            <!-- this too -->
+            <p>Don’t worry, these settings can always be changed later</p>
+            <div class="d-flex justify-content-between mt-4">
+                <input type="url" name="domainName" placeholder="Domain Url" class="domain-name">
+                <select name="domain" class="domain">
+                    <option value="">
+                        .com
+                    </option>
+                    <option value="">
+                        .net
+                    </option>   
+                    <option value="">
+                        .org
+                    </option>
+                    <option value="">
+                        .io
+                    </option>
+                </select>
+            </div>
+            <input type="text" name="siteTagline" placeholder="Site Tagline" style="width:100%" class="mt-4 tag">
+            <select name="Language" id=""style="width:100%" class="mt-4">
+              <option value="">
+                Language
+              </option>
+              <option value="English">
+                English
+              </option>   
+              <option value="French">
+                French
+              </option>
+              <option value="Spanish">
+                Spanish
+              </option>
+            </select>
+            <select name="Country" id="" style="width:100%" class="mt-4 country">
+                <option value="">
+                  Country
+                </option>
+                <option value="Nigeria">
+                  Nigeria
+                </option>   
+                <option value="Spain">
+                  Spain
+                </option>
+                <option value="America">
+                  America
+                </option>
+            </select>
+            <div class="terms d-flex mt-5">
+              <input type="checkbox" name="acceptTerms" id="acceptTerms" class="check">
+              <p>
+                Accept Ziki Terms and Conditions
+              </p>
+            </div>
+           <div class="d-flex justify-content-between mb-5">
+              <button id="previousButton" class="previous">
+                  <i class=" arrow fas fa-arrow-left"></i>Back to Profile Information
+              </button>
+              <button type="submit" id="installButton" disabled> 
+                  Install Ziki
+              </button>
+           </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="resources/installation/assets/js/main.js"></script>
+  </body>
+</html>

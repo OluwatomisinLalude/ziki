@@ -1,0 +1,176 @@
+{% set title = "Contact Us"%} {% extends 'layout.html' %} {% block page_content %}
+<style>
+    .contact-us__heading {
+        font-family: Lato;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        padding: 10px;
+        line-height: normal;
+        letter-spacing: -0.02em;
+        color: #280A66;
+    }
+    
+    .contact-us-form .form-control {
+        min-height: 50px;
+        background: #FFFFFF;
+        border: 1px solid #280A66;
+        font-family: Lato;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: normal;
+        letter-spacing: -0.02em;
+        color: #280A66;
+        box-sizing: border-box;
+        border-radius: 10px;
+    }
+    
+    .contact-us-form .form-label {
+        font-family: Lato;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: normal;
+        letter-spacing: -0.02em;
+        color: #280A66;
+    }
+    
+    .contact-us-form button {
+        font-family: Lato;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: normal;
+        letter-spacing: -0.02em;
+        color: #FFFFFF;
+        padding: 10px 30px;
+        background: #280A66;
+        border-radius: 2px;
+        border: 2px solid #280A66;
+    }
+    
+    .contact-us-form button:hover {
+        font-family: Lato;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: normal;
+        letter-spacing: -0.02em;
+        color: #FFFFFF;
+        opacity: 0.8;
+        padding: 10px 30px;
+        background: #280A66;
+        border-radius: 2px;
+        border: 2px solid #280A66;
+    }
+    /*media queries*/
+    
+    @media screen and (max-width: 600px) {
+        .contact-us-form .form-control {
+            min-height: 40px;
+            background: #FFFFFF;
+            border: 0;
+            font-family: Lato;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: normal;
+            letter-spacing: -0.02em;
+            color: #280A66;
+            box-sizing: border-box;
+            border-radius: 0px;
+            box-shadow: 0px 1px 10px rgba(170, 170, 170, 0.25);
+        }
+        .contact-us-form .form-label {
+            font-family: Lato;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 14px;
+            line-height: normal;
+            letter-spacing: -0.02em;
+            color: #280A66;
+        }
+        .contact-us-form {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        .contact-us-form button {
+            font-family: Lato;
+            margin-top: 10px;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: normal;
+            color: #FFFFFF;
+            padding: 10px 30px;
+            background: #280A66;
+            border-radius: 2px;
+            border: 1px solid #280A66;
+        }
+        .contact-us-form button:hover {
+            font-family: Lato;
+            margin-top: 10px;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: normal;
+            color: #FFFFFF;
+            padding: 10px 30px;
+            background: #280A66;
+            border-radius: 2px;
+            border: 1px solid #280A66;
+            opacity: 0.8;
+        }
+    }
+    /*media queries*/
+</style>
+<div class="container-fluid main-body">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 sidebar">
+            <!--
+                SIDE-BAR-ENTERS-HERE
+            -->
+
+        </div>
+
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 body-of-blog mt-5 pt-3">
+            <!--
+                LOGO
+            -->
+            <!--     <div class="m-4 text-right">
+                <img src="resources/themes/ghost/assets/img/Vector.png" alt="ZIKI" class="img-ziki-logo">
+	    </div>   -->
+            <div class="">
+                <h3 class="contact-us__heading">Contact Me</h3>
+                <div style="border: 2px solid #280a66; width:110px;"></div>
+                <div style="border: 1px solid #EBEBEB;"></div>
+            </div>
+            <div class="row justify-content-lg-start justify-content-md-start justify-content-sm-center">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <form class="contact-us-form mt-5">
+                        <div class="form-group">
+                            <label class="form-label">Name</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Additional Message</label>
+                            <textarea class="form-control" rows="5"></textarea>
+                        </div>
+                        <div class="form-group text-right">
+                            <button class="btn btn-primary">Send</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock page_content %}

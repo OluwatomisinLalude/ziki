@@ -1,0 +1,122 @@
+{% set title = "Videos"%}
+{% extends 'layout.html' %} {% block page_content %}
+
+<body>
+<div id="content">
+    <div class="container-fluid drafts">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class=" row col-12 col-sm-12 col-xs-12">
+                        <div class="col-sm-12 col-xs-6  pb-4 ">
+                            <button type="submit"
+                                    class="btn float-md-left profile-submit-btn text-white    "
+                                    data-toggle="modal" data-target="#addVideo">
+                                + ADD VIDEO
+                            </button>
+
+                        </div>
+                        <br><br>
+                        <div class="col-sm-6 col-xs-6">
+                            <p class="draft-date"> 2nd April, 2019</p>
+
+                            <iframe  width="420" height="315"
+                                     src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                            </iframe>
+
+                            <h5 class="video-class">Exploring the rocky hills of the Azerbaijan (Part 1) (Vlog)</h5>
+                            <p>As part of our trip to the East, me and Mike had an amazing drive through the rocky hills of the coast. Not everytime lorem ipsum, sometimes type something yourself ...</p>
+
+
+                        </div>
+
+                        <div class="col-sm-6 col-xs-6">
+                            <p class="draft-date"> 2nd April, 2019</p>
+
+                            <iframe  width="420" height="315"
+                                     src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                            </iframe>
+
+                            <h5 class="video-class">Exploring the rocky hills of the Azerbaijan (Part 1) (Vlog)</h5>
+                            <p>As part of our trip to the East, me and Mike had an amazing drive through the rocky hills of the coast. Not everytime lorem ipsum, sometimes type something yourself ...</p>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- modal begins here -->
+
+<!-- Modal -->
+<div
+        class="modal fade"
+        id="addVideo"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="add-video-label"
+        aria-hidden="true"
+>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="add-video-label">
+                    Add a Video
+                </h5>
+                <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                >
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="" action="/addvideo" class="add-video-form" method="post">
+                    <div class="form-group">
+                        <label>Video URL</label>
+                        <input type="url" class="form-control" name="domain"
+                               id="url" value="" placeholder="video.mp4"
+                               required
+                        />
+                        <br>
+
+                        <label>Video Title</label>
+                        <input type="title" class="form-control" name="title"
+                               id="title" value="" placeholder="Explore Africa"
+                               required
+                        />
+                        <br>
+
+                        <label>Video Description</label>
+                        <input type="description" class="form-control" name="description"
+                               id="description" value="" placeholder="As part of our trip to the East, me and Mike had an amazing drive"
+                               required
+                        />
+                    </div>
+                </form>
+                <br>
+                <button id="submitButton" type="submit"  class="btn btn-success">
+                    Add Video
+                </button>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- modal ends here -->
+
+
+{% endblock page_content %}

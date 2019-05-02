@@ -1,9 +1,160 @@
+{% include "subscribe-here.html" %}
+{% include "add-subscription.html" %}
+{% include "unsubscribe-here.html" %}
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+
+<!-- Side bar script -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
+    });
+</script>
+
+<!--Email login modal (uncomment this code for modal to work, but then, the side war won't work-->
+<script>
+  const $$ = document.querySelector.bind(document)
+  let congrat = $$('.login-mail-sent')
+  let form_l = $$('.login-form')
+  let message = $$('.magic-msg')
+  congrat.style.display = 'none';
+  let sendEmail = () => {
+    let param = $$('.email-input').value;
+    let host = $$('.host').value;
+    let url = `https://auth.techteel.com/api/login/email?address=${param}?domain=${host}`;
+    fetch(url)
+      .then((res) => { return res.json() })
+      .then((data) => {
+        console.log(data)
+          form_l.style.display = 'none';
+          congrat.style.display = 'block';
+          message.innerHTML = "Magic link sent successfully, check your email.";
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+  };
+  $$('.email-login-button').addEventListener('click', sendEmail);
+</script>
+
+<!-- Convert to markdown script -->
+<script src="https://unpkg.com/turndown/dist/turndown.js"></script>
+<script src="https://unpkg.com/turndown-plugin-gfm/dist/turndown-plugin-gfm.js"></script>
+<!-- convert to markdown script ends -->
+
+
+<script>
+  // added by sleekX
+  var form = document.querySelector('.timeline-editor');
+
+  // handle creating new post
+  form.onsubmit = newPostSubmitHandler;
+
+  // handle saving draft
+  document.querySelector('input[value="Save Draft"]').addEventListener('click', newPostSubmitHandler);
+
+  function newPostSubmitHandler(event) {
+    event.preventDefault();
+
+    const formData = new FormData(document.querySelector('#editor-form'));
+    const blogBody = document.querySelector('.ql-editor').innerHTML;
+
+    // convert to markdown
+    const turndownService = new TurndownService({ codeBlockStyle: 'fenced' });
+    const gfm = turndownPluginGfm.gfm;
+    turndownService.use(gfm);
+    let markdown = turndownService.turndown(blogBody);
+
+    // check if the form is being submitted
+    // which would mean a new post is being created rather than saving a draft
+    const newPostIsBeingCreated = event.target instanceof HTMLFormElement;
+    if (newPostIsBeingCreated) {
+      // get all imageURIs in the document
+      let imageURIs = markdown.match(/\!\[\]\(data:image\/\w+;base64,[^)]*\)/g);
+      // are there images in the blog post?
+      if (imageURIs) {
+        // remove duplicates
+        imageURIs = imageURIs.reduce((acc, curVal) => {
+          if (!acc.includes(curVal)) acc.push(curVal);
+          return acc;
+        }, []);
+
+        imageURIs.forEach(imageURI => {
+          const [, fullURI, ext, uriData] = imageURI.match(/\!\[\]\((data:image\/(\w+);base64,([^)]*))\)/);
+          const id = Math.random().toString(36).substr(2, 10);
+          const newImgName = `img-${id}.${ext}`;
+
+          // replace the image URI everywhere it occurs in the markdown
+          let stillMatching = true;
+          while (stillMatching) {
+            if (markdown.includes(fullURI)) {
+              markdown = markdown.replace(fullURI, `/storage/images/${newImgName}`);
+            } else {
+              stillMatching = false;
+            }
+          }
+
+          // add this info to the form data being sent to the backend
+          formData.set(newImgName, uriData);
+        });
+      }
+    }
+
+    formData.set('postVal', markdown);
+
+    // get tags
+    const selected = document.querySelectorAll('#new-post-tags option:checked');
+    const selectedTags = Array.from(selected).map(el => el.value);
+    formData.set('tags', selectedTags);
+
+    // send the form data
+    fetch(newPostIsBeingCreated ? '/publish' : '/draft', {
+      method: 'POST',
+      body: formData
+    }).then(res => res.text()).then((res) => {
+      console.log(res);
+      if(window.confirm(`Check console for response.
+      Redirect to view new post?`)) {
+        window.location = '/timeline';
+      }
+    }).catch((err) => {
+      alert(`Failed with the following message: ${err.message}`);
+    });
+  };
+  // sleekx code ends here
+
+
+  //Initialize Quill editor
+  var toolbarOptions = [
+    ['bold', 'italic'],
+    ['blockquote'],
+    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+    ['link', 'image'],
+    ['clean']
+  ];
+  var quill = new Quill('#editor', {
+    theme: 'snow',
+    modules: {
+        toolbar: toolbarOptions
+    },
+    placeholder: 'Compose an epic...'
+  });
+</script>
+<script src="//cdn.quilljs.com/1.3.6/quill.core.js"></script>
 <footer>
-  <!-- main content for footer of pages will be put here -->
+<div class="container-fluid">
+  <div class="row footer">
+    <div class="col-12 text-right ">
+      <p class="footer-item">Powered by<span class="lucid">Lucid</span></p>
+    </div>
+  </div>
+</div>
 </footer>
 </body>
 

@@ -1,151 +1,253 @@
-{% extends "layout.html" %}
-{% block page_content %}
+{% set title = "Welcome to Ziki"%} {% extends 'layout.html' %}{% block page_content %}
 <style>
-    .body-of-blog {
-        background-color: #f9f9f9;
-    }
-
-    .blog-post-title {
-        letter-spacing: -0.02em;
-        color: #1B1B1B;
-        border-bottom: 1px solid black;
-    }
-
-    .about-blog-source {
-        font-weight: bold;
-    }
-
-    /*  PLACEHOLDER STYLING  */
-    ::placeholder {
-        /* Chrome, Firefox, Opera, Safari 10.1+ */
-        color: #280A66;
-        /* Firefox */
-    }
-
-    :-ms-input-placeholder {
-        /* Internet Explorer 10-11 */
-        color: #280A66;
-    }
-
-    ::-ms-input-placeholder {
-        /* Microsoft Edge */
-        color: #280A66;
-    }
-
-    /*  PLACEHOLDER STYLING  */
-
-    /*  COMMENT SECTION STYLING  */
-    .send-comment-btn {
-        border: none;
-        background-color: #280A66;
-        color: #fff;
-        padding: 0.5em 2em;
-        border-radius: 3px;
+    h1,
+    h2,
+    h4,
+    h5,
+    h6,
+    p {
+        font-family: Lato;
+        letter-spacing: 0.03em;
         font-size: 14px;
     }
-
-    .send-comment-btn:hover {
+    
+    .blog-details .img-logo {
+        padding-top: 15px;
+        padding-bottom: 20px;
+    }
+    
+    .blog-details .body-of-blog {
+        border-radius: 4px;
+    }
+    
+    .blog-details .blog-post-title {
+        letter-spacing: -0.02em;
+    }
+    
+    .blog-details .blog-post-title h3 {
+        font-family: Lato;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 32px;
+    }
+    
+    .blog-details .about-blog-source {
+        font-weight: bold;
+    }
+    
+    .blog-details .author-img {
+        border-radius: 50%;
+    }
+    
+    .blog-source,
+    .blog-date {
+        font-size: 12px;
+        font-family: 500;
+        text-decoration: none;
+    }
+    
+    .blog-source {
+        font-size: 12px;
+        color: blueviolet;
+    }
+    /*  PLACEHOLDER STYLING  */
+    
+     ::placeholder {
+        /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: var(--custom-deep-purple);
+        /* Firefox */
+    }
+    
+     :-ms-input-placeholder {
+        /* Internet Explorer 10-11 */
+        color: var(--custom-deep-purple);
+    }
+    
+     ::-ms-input-placeholder {
+        /* Microsoft Edge */
+        color: var(--custom-deep-purple);
+    }
+    /*  PLACEHOLDER STYLING  */
+    /*  CATEGORIES TAGS STYLING  */
+    
+    .blog-details .body-of-blog {
+        border-radius: 4px;
+    }
+    
+    .blog-details .categories {
+        padding: 5px 9px;
+        border: 1px solid blueviolet;
+        border-radius: 2px;
+    }
+    
+    .categories {
+        font-weight: 500;
+        font-size: 14px;
+        padding: 15px;
+    }
+    
+    .blog-details .categories:hover {
         cursor: pointer;
-        box-shadow: 3px 3px 18px #4c4c4c;
+        transition: all ease-in 0.3s;
     }
-
-    textarea {
-        resize: none;
-        width: 100%;
-        border: none;
-        background-color: #f9f9f9;
-    }
-
-    .guest-action-items span {
+    
+    .blog-details .guest-action-items span {
         margin-left: 10px;
         margin-right: 10px;
     }
-
-    /*  COMMENT SECTION STYLING  */
-
-
-    /*  POST TAGS STYLING  */
-    .categories {
-        background-color: #EEEEEE;
-        padding: 5px 9px;
-        margin-left: 15px;
+    
+    .blog-posts a {
+        text-decoration: none;
+        color: #212529;
+        line-height: 0.03em;
     }
-
-    /*  POST TAGS STYLING  */
+    /*AUTHOR'S IMAGE*/
+    
+    .author-img {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+    }
+    /*media queries*/
+    
+    @media screen and (max-width: 617px) {
+        .blog-details .author-img {
+            width: 3em;
+            height: 3em;
+        }
+        .author-img {
+            left: 0px;
+        }
+        .about-blog-source {
+            position: absolute;
+            left: 4em;
+            padding: 0px;
+            margin-top: 5px;
+            margin-left: 15px;
+            width: 50%;
+        }
+        .body-of-blog .info-on-author {
+            margin-bottom: 2em;
+        }
+    }
+    
+    @media (min-width:767px) {
+        .about-blog-source {
+            margin-left: 1.5em;
+            margin-top: 0.4em;
+        }
+    }
+    /*media queries*/
 </style>
-<div class="container-fluid ">
+<div class="container-fluid blog-details">
     <div class="row">
-        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 sidebar">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 sidebar">
 
         </div>
 
-        <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-            <div class="blog-post-title mt-2">
-                <h2>Looking for where to spend christmas from the comfort of your home</h2>
-            </div>
-            <div class="body-of-blog p-4 mt-4">
-                <div class="info-on-author row">
-                    <div class="col-lg-1 col-md-1 col-sm-2 col-xs-2">
-                        <img src="resources/themes/ghost/assets/img/Ellipse.png" alt="" class="author-img">
+        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 mt-5 pt-3">
+            <!-- LOGO -->
+            <!--     <div class="img-logo text-right">
+                <img src="resources/themes/ghost/assets/img/Vector.png" alt="logo" width="34" height="35">
+       </div> -->
+            <div class="body-of-blog mt-2">
+                <div class="info-on-author row d-flex justify-content-start text-center">
+                    <div class="col-lg-1 col-md-2 col-sm-2 col-xs-3">
+                        <img src="/resources/themes/ghost/assets/img/Ellipse (1) 2.png" alt="" class="img-fluid author-img">
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-3 about-blog-source text-left p-0">
+                        <!--<p class="blog-source p-0 m-0">{{result.title | raw}}</p>
+                        <p class="blog-date p-0 m-0">{{result.timestamp | raw}}</p>-->
+                        <p class="blog-date p-0 m-0">12<sup>th</sup> April 2019</p>
+                        <p class="blog-source p-0 m-0">James Rogger</p>s
                     </div>
 
-                    <div class="col-lg-5 col-md-5 col-sm-4 col-xs-4 about-blog-source">
-                        <p class="blog-source p-0 m-0">The Shade Room</p>
-                        <p class="blog-date p-0 m-0">12<sup>th</sup> April 2019</p>
+                    <div class="col-4">
+
                     </div>
                 </div>
-
+                <div class="blog-post-title mt-3">
+                    <h3>Looking for where to spend christmas</h3>
+                </div>
                 <div class="blog-info">
                     <div class="blog-image-header">
-                        <img src="resources/themes/ghost/assets/img/unnamed.png" alt=""
-                            class="blog-image w-100 mb-5 mt-5">
+                        <img src="/resources/themes/ghost/assets/img/Rectangle 2.1.png" alt="" class="blog-image w-100 mb-3 mt-3">
                     </div>
 
                     <div class="blog-posts">
+                        <!--<p>{{result.body | raw}} </p>-->
                         <p>
-                            placeat iusto! Eos magni quam aspernatur alias aut? Ea excepturi quasi, asperiores neque
-                            fugiat odio
-                            reprehenderit explicabo corrupti iste architecto sit nostrum in fuga sed animi incidunt
-                            repellendus
-                            quos quod, enim culpa, at labore cum ab? Ab fugit pariatur doloremque labore suscipit
-                            delectus unde
-                            minima molestias ullam, blanditiis sequi soluta atque odio exercitationem, eum nihil maxime
-                            tempora <br>
-                            obcaecati? Eius dolorem sapiente est ratione incidunt eum sit quidem error et distinctio
-                            accusantium
-                            molestias, quae voluptas quod autem veritatis, iure nulla dicta illo iste asperiores esse.
-                            Magni,
-                            repellendus! Perferendis amet a fugit earum. Sunt similique earum explicabo consequatur
-                            fugiat
-                            reiciendis iure amet hic! Fugit officia dolore magni, veritatis soluta temporibus voluptatum
-                            assumenda laboriosam praesentium totam. Dignissimos nesciunt, quisquam accusantium aut qui
-                            possimus?<br>
-                            Ipsa, eum repellendus. Quisquam est eveniet similique, aut corporis repudiandae eius
-                            molestiae
-                            itaque fuga quos autem nulla rerum sequi saepe debitis enim totam molestias, magni mollitia,
-                            doloribus non placeat fugiat! Veritatis sint iure, non dignissimos, suscipit ratione tempore
-                            illo,
-                            aspernatur soluta vel illum repellat molestias voluptatum nisi odit eos. Quisquam ipsam
-                            incidunt br
-                            recusandae soluta, exercitationem et doloremque ipsum voluptas eum mollitia accusantium
-                            dignissimos
-                            labore a dolores eius cupiditate minima deleniti. Reprehenderit, facilis!</p>
-                        <p id="post-information"><span><i class="fa fa-bookmark"></i></span>
-                            <span class="categories">Remote Jobs</span>
-                            <span class="categories">Developers</span></p>
+                            placeat iusto! Eos magni quam aspernatur alias aut? Ea excepturi quasi, asperiores neque fugiat odio reprehenderit explicabo corrupti iste architecto sit nostrum in fuga sed animi incidunt repellendus quos quod, enim culpa, at labore cum ab? Ab fugit
+                            pariatur doloremque labore suscipit delectus unde minima molestias ullam, blanditiis sequi soluta atque odio exercitationem, eum nihil maxime tempora <br> obcaecati? Eius dolorem sapiente est ratione
+                            incidunt eum sit quidem error et distinctio accusantium molestias, quae voluptas quod autem veritatis, iure nulla dicta illo iste asperiores esse. Magni, repellendus! Perferendis amet a fugit earum. Sunt similique earum explicabo
+                            consequatur fugiat reiciendis iure amet hic! Fugit officia dolore magni, veritatis soluta temporibus voluptatum assumenda laboriosam praesentium totam.<br />
+                            <i>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                tempor<br /> incididunt ut labore et dolore ,Lorem ipsum ipsum doloconsectetur adipiscing elit,<br /> sed do
+                                eiusmod tempor ut labore et dolore</i>
+                            <br /> Dignissimos nesciunt, quisquam accusantium aut qui possimus? Ipsa, eum repellendus. Quisquam est eveniet similique, aut corporis repudiandae eius molestiae itaque fuga quos autem nulla rerum sequi saepe debitis enim
+                            totam molestias, magni mollitia, doloribus non placeat fugiat! Veritatis sint iure, non dignissimos, suscipit ratione tempore illo, aspernatur soluta vel illum repellat molestias voluptatum nisi odit eos. Quisquam ipsam incidunt
+                            br recusandae soluta, exercitationem et doloremque ipsum voluptas eum mollitia accusantium dignissimos labore a dolores eius cupiditate minima deleniti. Reprehenderit, facilis!
+                        </p>
+
+                        <div class="mt-5">
+                            <a href="#"><span class="categories">Privacy</span></a>
+                            <a href="#"><span class="categories">Privacy</span></a>
+                        </div>
+                        <div class="social-media mt-3">
+                            <a href="#"><img src="/resources/themes/ghost/assets/img/facebookicon.png" alt="tag-label">
+                            </a>
+                            <a href="#"><img src="/resources/themes/ghost/assets/img/twitter (1).png" alt="tag-label">
+                            </a>
+                            <a href="#"><img src="/resources/themes/ghost/assets/img/linkedin.png" alt="tag-label">
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="comment-box mt-4 pl-4 pr-4 mx-auto">
-                <!-- <textarea placeholder="Write a comment" name="comment section" id="comment-area"
-                    class="p-2 mb-3"></textarea>
-                <div class="d-flex justify-content-end guest-action-items">
-                    <span><i class="fa fa-image"></i></span>
-                    <span><i class="fa fa-image"></i></span>
-                    <button class="send-comment-btn">Send</button> -->
+                <!-- this div is for the disqus commenting function -->
+                <div id="disqus_thread"></div>
+
+
+<script>
+(function() {
+    // your code here
+})();
+</script>
+
+
+
+                <script>//alert("{{COMMENT_PLUGIN}}");
+	
+
+	var plugin = "{{COMMENT_PLUGIN}}";
+	if ( plugin == disqus) {
+                    /**
+                     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                    /*
+                    var disqus_config = function () {
+                    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                    };
+                    */
+                    (function() { // DON'T EDIT BELOW THIS LINE
+                        var d = document,
+                            s = d.createElement('script');
+                        s.src = 'https://ziki-3.disqus.com/embed.js';
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                    })();
+	}
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<div class="fb-comments" data-href="{{FACEBOOK_DOMAIN_URL}}" data-width="" data-numposts="5"></div>
             </div>
         </div>
     </div>
 </div>
 </div>
+</div>
+</div>
+<script id="dsq-count-scr" src="//ziki-3.disqus.com/count.js" async></script>
 {% endblock page_content %}

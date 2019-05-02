@@ -1,0 +1,161 @@
+body {
+  font-family: Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.logo {
+  margin: 3rem 0 0;
+  text-align: center;
+}
+
+.main {
+  padding: 1rem 3rem;
+  width: 85%;
+  margin: 0 auto 3rem;
+  background: rgba(40, 10, 102, 0.05);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.welcome-text {
+  font-weight: bold;
+  text-align: center;
+  color: #280a66;
+}
+.description-text {
+  text-align: center;
+  width: 70%;
+  margin: auto;
+  line-height: unset;
+}
+.indicator {
+  margin-top: 10px;
+  border-bottom: 0.5px solid #717171;
+}
+.purple {
+  color: #280a66;
+}
+.step-form {
+  width: 90%;
+  margin: auto;
+}
+div.step-form:nth-of-type(2){
+  display: none;
+}
+input,
+select {
+  color: #717171;
+  background: #ffffff;
+  padding: 0.6rem 0.8rem;
+  border: none;
+  border-radius: 0.5rem;
+}
+::placeholder {
+  color: #717171;
+}
+.names * {
+  width: 45%;
+}
+.username-role * {
+  width: 45%;
+}
+.e-mail {
+  width: 100%;
+}
+.divider {
+  color: #717171;
+}
+.divider::before,
+.divider::after {
+  content: "";
+  flex-grow: 1;
+  background: #717171;
+  height: 1px;
+  font-size: 0;
+  line-height: 0;
+}
+.divider span {
+  margin: 0 2rem;
+}
+.social-auth {
+  box-sizing: border-box;
+  width: 45%;
+  border: none;
+  border-radius: 0.5rem;
+  height: 60px;
+}
+.social-auth i {
+  font-size: 1.7rem;
+  color: #ffffff;
+  padding: 1rem;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+.social-auth button {
+  background: transparent;
+  color: #ffffff;
+  width: 100%;
+  border: none;
+}
+.facebook-auth {
+  background: rgba(71, 89, 147, 0.81);
+}
+.facebook-auth i {
+  background: #475993;
+}
+.google-auth {
+  background: rgba(241, 67, 54, 0.8);
+}
+.google-auth i {
+  background: #f14336;
+}
+.next-button, #installButton {
+  padding: 0.6rem 1.4rem;
+  background: #280a66;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.arrow {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  vertical-align: middle
+}
+/* step 2 styling */
+.domain-name {
+  width: 75%;
+}
+.domain {
+  width: 20%;
+}
+.terms {
+  justify-content: center;
+  padding-bottom: 0.5rem;
+}
+.terms input {
+  margin-top: .4rem;
+  margin-right: .7rem;
+}
+.previous{
+  background: transparent;
+  border: none;
+  color: #717171;
+}
+#installButton:disabled{
+  background: #290a669d;
+  cursor: not-allowed;
+}
+
+/* media queries */
+@media screen and (max-width:767.98px){
+  .main{
+    display: none;
+  }
+  body::after{
+    content: 'Kindly do this on a bigger device for greater acessibility';
+    display: block;
+    width: 90%;
+    margin: auto;
+    text-align: center;
+  }
+}

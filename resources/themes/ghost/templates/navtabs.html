@@ -1,0 +1,35 @@
+<!-- for any other part of the page -->
+<div class="row profile-header d-flex flex-row justify-content-between pb-1 flex-nowrap">
+    <div class="col">
+        <nav class="navbar pb-0 row px-0 shadow-none mb-0">
+            <ul class="d-flex flex-row navbar-nav col-12">
+                {% for item in navigation %}
+                    {% if current_page == item.href %}
+                    <li class="px-0 py-3 mr-3 active">
+                        <a href="/{{ item.href }}" class="profile-top-link text-uppercase">
+                            {%if item.count %} 
+                            <span class="follow-numbers">{{ item.count }}</span> 
+                            {{ item.caption }}</a>
+                            {% else %}
+                            {{ item.caption }}
+                            {% endif %}
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="px-0 py-3 mr-3">
+                        <a href="/{{ item.href }}" class="profile-top-link text-uppercase">
+                            {%if item.count %} 
+                            <span class="follow-numbers">{{ item.count }}</span>
+                            {{ item.caption }}</a>
+                            {% else %}
+                            {{ item.caption }}
+                            {% endif %}
+                        </a>
+                    </li>
+                    {% endif %}
+                {% endfor %}
+                <li class="p-3"></li>
+            </ul>
+        </nav>
+    </div>
+</div>

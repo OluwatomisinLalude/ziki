@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:creativeCommons="http://backend.userland.com/creativeCommonsRssModule">
+<channel>
+<title>khadijat Yusuf</title>
+<link>http://localhost:8000/</link>
+<description><![CDATA[]]></description>
+<image><title>khadijat Yusuf</title>
+<link></link>
+<url>https://lh6.googleusercontent.com/-kcUvksZJ4tE/AAAAAAAAAAI/AAAAAAAAABI/Re6_N6f6ypE/photo.jpg</url>
+</image>
+<language>en-US</language>
+<lastBuildDate>Wed, 01 May 2019 20:33:02 +0000</lastBuildDate>
+<pubDate>Sat, 06 Apr 2013 00:00:00 +0000</pubDate>
+<atom:link href="http://localhost:8000/storage/rss/rss.xml" rel="self" type="application/rss+xml"></atom:link>
+<atom:link href="http://pubsubhubbub.appspot.com" rel="hub"></atom:link>
+<creativeCommons:license>http://www.creativecommons.org/licenses/by/1.0</creativeCommons:license>
+<generator>Ziki</generator>
+<item>
+<title>First Demo of Posts</title>
+<link>First-Demo-of-Posts-1556528280</link>
+<description><![CDATA[which simply means that it takes an array and returns a string. It rejoins any array elements and re]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0000</pubDate>
+<author>yusufkjart@gmail.com (khadijat Yusuf)</author>
+<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556528280&quot;&gt;http://localhost:8000//storage/contents/1556528280&lt;/a&gt;&lt;/p&gt;</guid>
+<source url="http://localhost:8000/">khadijat Yusuf's page</source>
+</item>
+<item>
+<title>Welcome to a new Era</title>
+<link>Welcome-to-a-new-Era-1556540520</link>
+<description><![CDATA[The foreach construct provides an easy way to iterate over arrays. foreach works only on arrays ]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0000</pubDate>
+<author>yusufkjart@gmail.com (khadijat Yusuf)</author>
+<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556540520&quot;&gt;http://localhost:8000//storage/contents/1556540520&lt;/a&gt;&lt;/p&gt;</guid>
+<source url="http://localhost:8000/">khadijat Yusuf's page</source>
+</item>
+<item>
+<title>Welcome to a new Era</title>
+<link>Welcome-to-a-new-Era-1556660640</link>
+<description><![CDATA[The foreach construct provides an easy way to iterate over arrays. foreach works only on arrays ]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0000</pubDate>
+<author>yusufkjart@gmail.com (khadijat Yusuf)</author>
+<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556660640&quot;&gt;http://localhost:8000//storage/contents/1556660640&lt;/a&gt;&lt;/p&gt;</guid>
+<source url="http://localhost:8000/">khadijat Yusuf's page</source>
+</item>
+<item>
+<title>Welcome to a new Era</title>
+<link>Welcome-to-a-new-Era-1556706300</link>
+<description><![CDATA[The unset() function allows removing keys from an array. Be aware that the array will not be re]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0000</pubDate>
+<author>yusufkjart@gmail.com (khadijat Yusuf)</author>
+<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556706300&quot;&gt;http://localhost:8000//storage/contents/1556706300&lt;/a&gt;&lt;/p&gt;</guid>
+<source url="http://localhost:8000/">khadijat Yusuf's page</source>
+</item>
+<item>
+<title>This is to test the draft</title>
+<link>This-is-to-test-the-draft-1556709480</link>
+<description><![CDATA[The unset() function allows removing keys from an array. Be aware that the array will not be re]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0000</pubDate>
+<author>yusufkjart@gmail.com (khadijat Yusuf)</author>
+<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556709480&quot;&gt;http://localhost:8000//storage/contents/1556709480&lt;/a&gt;&lt;/p&gt;</guid>
+<source url="http://localhost:8000/">khadijat Yusuf's page</source>
+</item>
+<item>
+<title>PHP database management</title>
+<link>PHP-database-management-1556726940</link>
+<description><![CDATA[umask() sets PHP&#39;s umask to **mask** &#38; 0777 and returns the old umask. When PHP is being ]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0000</pubDate>
+<author>yusufkjart@gmail.com (khadijat Yusuf)</author>
+<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556726940&quot;&gt;http://localhost:8000//storage/contents/1556726940&lt;/a&gt;&lt;/p&gt;</guid>
+<source url="http://localhost:8000/">khadijat Yusuf's page</source>
+</item>
+<item>
+<title>This is to ttest the post page</title>
+<link>This-is-to-ttest-the-post-page-1556742780</link>
+<description><![CDATA[umask() sets PHP&#39;s umask to **mask** &#38; 0777 and returns the old umask. When PHP is being ]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0000</pubDate>
+<author>yusufkjart@gmail.com (khadijat Yusuf)</author>
+<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556742780&quot;&gt;http://localhost:8000//storage/contents/1556742780&lt;/a&gt;&lt;/p&gt;</guid>
+<source url="http://localhost:8000/">khadijat Yusuf's page</source>
+</item>
+</channel>
+</rss>

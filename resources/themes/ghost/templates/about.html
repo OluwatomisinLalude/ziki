@@ -1,0 +1,203 @@
+{% set title = "About"%} {% extends 'layout.html' %} {% block page_content %}
+<style>
+    .about__heading {
+        font-family: Lato;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: normal;
+    }
+    .contact-us-form .form-control {
+        min-height: 50px;
+        background: #FFFFFF;
+        border: 1px solid #280A66;
+        font-family: Lato;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: normal;
+        letter-spacing: -0.02em;
+        color: #280A66;
+        box-sizing: border-box;
+        border-radius: 0px;
+    }
+    
+    .contact-us-form .form-label {
+        font-family: Lato;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: normal;
+        letter-spacing: -0.02em;
+        color: #280A66;
+    }
+    
+    .contact-us-form button {
+        font-family: Lato;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: normal;
+        letter-spacing: -0.02em;
+        color: #FFFFFF;
+        padding: 10px 30px;
+        background: #280A66;
+        border-radius: 2px;
+        border: 2px solid #280A66;
+    }
+    
+    .contact-us-form button:hover {
+        font-family: Lato;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: normal;
+        letter-spacing: -0.02em;
+        color: #FFFFFF;
+        opacity: 0.8;
+        padding: 10px 30px;
+        background: #280A66;
+        border-radius: 2px;
+        border: 2px solid #280A66;
+    }
+    /*media queries*/
+    
+    @media screen and (max-width: 600px) {
+        .contact-us-form .form-control {
+            min-height: 40px;
+            background: #FFFFFF;
+            border: 0;
+            font-family: Lato;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: normal;
+            letter-spacing: -0.02em;
+            color: #280A66;
+            box-sizing: border-box;
+            border-radius: 0px;
+            box-shadow: 0px 1px 10px rgba(170, 170, 170, 0.25);
+        }
+        .contact-us-form .form-label {
+            font-family: Lato;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 14px;
+            line-height: normal;
+            letter-spacing: -0.02em;
+            color: #280A66;
+        }
+        .contact-us-form {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        .contact-us-form button {
+            font-family: Lato;
+            margin-top: 10px;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: normal;
+            color: #FFFFFF;
+            padding: 10px 30px;
+            background: #280A66;
+            border-radius: 2px;
+            border: 1px solid #280A66;
+        }
+        .contact-us-form button:hover {
+            font-family: Lato;
+            margin-top: 10px;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: normal;
+            color: #FFFFFF;
+            padding: 10px 30px;
+            background: #280A66;
+            border-radius: 2px;
+            border: 1px solid #280A66;
+            opacity: 0.8;
+        }
+    }
+    /*media queries*/
+</style>
+<div class="container px-5">
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 body-of-blog mt-5 pt-3">
+           <div class="mb-4">
+                <h3 class="about__heading">About</h3>
+            </div>
+            <div class="w-100">
+             <p class="text-justify about-text">I'm Matthias Endler, a Backend Engineer living in Düsseldorf, Germany. My interests are scalability, performance and distributed systems.<br><br>I have an M.Sc. in Computer Science from Universität Bayreuth. At work, I improve the Backend infrastructure of trivago by making it faster and more reliable.<br><br>Nowadays, I mostly use Golang, Python, and Rust to get stuff done. I run Hello, Rust!, a YouTube channel about the Rust programming language. <br><br>I'm an active member of the following usergroups: <br><ul><li>Rust Cologne</li><li>Web Engineering Düsseldorf</li><li>Python Meeting Düsseldorf (PyDDF)</li></ul><br>Here's a list of previous Talks I gave there and elsewhere.<br><br>At home I feel like riding my motorcycle, playing guitar in Rock bands and drinking hot chocolate. (In that order.) <br><br>You can find me on Twitter, LinkedIn, Stack Overflow, and Github or send me a mail</p>
+            </div>
+            <div class="mt-5">
+                <h3 class="about__heading">Contact</h3>
+            </div>
+            <div class="row justify-content-lg-start justify-content-md-start justify-content-sm-center">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    {% if message.success %}
+                    <div class="alert alert-success" id="msgContainer" style="margin-top:20px;">
+                            <div class="row">
+                                <div class="col-11">{{ message.success }}</div>
+                                <div class="col-1 text-right"><a id="closebtn" href="javascript:void(0)" style="text-decoration:none;color:#111;">&times;</a></div>
+                            </div>
+                    </div>
+                    {% elseif message.FormFieldError %}
+                    <div class="alert alert-danger" id="msgContainer" style="margin-top:20px;">
+                            <div class="row">
+                                <div class="col-11">{{ message.FormFieldError }}</div>
+                                <div class="col-1 text-right"><a id="closebtn" href="javascript:void(0)" style="text-decoration:none;color:#111;">&times;</a></div>
+                            </div>
+                    </div>
+                    {% elseif message.serverError %}
+                    <div class="alert alert-warning" id="msgContainer" style="margin-top:20px;">
+                            <div class="row">
+                                <div class="col-11">{{ message.serverError }}</div>
+                                <div class="col-1 text-right"><a id="closebtn" href="javascript:void(0)" style="text-decoration:none;color:#111;">&times;</a></div>
+                            </div>
+                    </div>
+                    {% elseif message.ownerEmailNotProvided %}
+                    <div class="alert alert-info" id="msgContainer" style="margin-top:20px;">
+                        <div class="row">
+                            <div class="col-11">Oops,Sorry you can't send your feedback yet!</div>
+                            <div class="col-1 text-right"><a id="closebtn" href="javascript:void(0)" style="text-decoration:none;color:#111;">&times;</a></div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <form class="contact-us-form mt-5" action="/send" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="guestName" placeholder="Name" value="{{ message.name }}" class="form-control">
+                            {% if message.nameError %}
+                            <span class="text-danger">{{ message.nameError }}</span>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="guestEmail" placeholder="Email" value="{{ message.email }}" class="form-control">
+                            {% if message.emailError %}
+                            <span class="text-danger">{{ message.emailError }}</span>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Message" name="guestMsg" rows="5" cols="10">{{ message.msg }}</textarea>
+                            {% if message.msgError %}
+                            <span class="text-danger">{{ message.msgError }}</span>
+                            {% endif %}
+                        </div>
+                        <div class="form-group text-right">
+                            <button class="btn" name="send" {% if message.ownerEmailNotProvided %} disabled style="cursor:not-allowed;" {% endif %}  type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    let closeBtn = document.getElementById('closebtn');
+    closeBtn.addEventListener('click',function(){
+        document.getElementById('msgContainer').style.display='none';
+    });
+</script>
+{% endblock page_content %}

@@ -1,0 +1,209 @@
+{% set domain = "ziki.hng.tech" %}
+
+<style>
+  :root {
+    --ziki-purple: #280a66;
+  }
+
+  #unsubscribe-here .modal-content {
+    border-radius: 2em;
+  }
+
+  #unsubscribe-here .modal-header {
+    background: linear-gradient(180deg, #973793 0%, rgba(134, 64, 131, 0) 100%),
+      #3b0e75;
+    border-top-left-radius: 1.9em;
+    border-top-right-radius: 1.9em;
+    color: #fff;
+    padding: 2em 1.5em;
+    border-bottom: none;
+    box-shadow: 0 3px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  #unsubscribe-here .modal-header .close {
+    color: #fff;
+    font-size: 3em;
+    opacity: 1;
+  }
+
+  #unsubscribe-here .modal-header .row-container {
+    width: 100%;
+  }
+
+  .unsubscribe-here-logo {
+    max-width: 40px;
+    width: 100%;
+  }
+
+  #unsubscribe-here .hide-above-mobile {
+    display: none;
+  }
+
+  .unsubscribe-here-form .form-control {
+    box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25);
+  }
+
+  .unsubscribe-here-form #subscriber-ziki-domain {
+    /* browser icon that shows in the text field */
+    background: url('/resources/themes/ghost/assets/img/browser-icon.png')
+      no-repeat center;
+    background-image: url('/resources/themes/ghost/assets/img/browser-icon.svg');
+    background-position: 4px;
+    background-repeat: no-repeat;
+
+    /* indent text so it's not covered by icon */
+    padding-left: 2.5em;
+    box-sizing: border-box;
+  }
+
+  .unsubscribe-here-form .btn {
+    color: #fff;
+    background-color: var(--ziki-purple);
+  }
+
+  @media screen and (max-width: 767px) {
+    #unsubscribe-here .modal-dialog {
+      height: 100%;
+      margin: 0;
+      background: linear-gradient(
+          180deg,
+          #973793 0%,
+          rgba(134, 64, 131, 0) 100%
+        ),
+        #3b0e75;
+      overflow-y: hidden;
+    }
+
+    #unsubscribe-here .title-container * {
+      /* hide everything in the title-container to create empty space */
+      display: none;
+    }
+
+    #unsubscribe-here .modal-dialog {
+      max-width: 100%;
+    }
+
+    #unsubscribe-here .modal-content,
+    #unsubscribe-here .modal-header {
+      border-radius: 0;
+      background: none;
+      border: none;
+    }
+
+    #unsubscribe-here .modal-content {
+      height: 100%;
+    }
+
+    #unsubscribe-here .modal-header {
+      box-shadow: none;
+    }
+
+    #unsubscribe-here .modal-body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #unsubscribe-here .hide-above-mobile {
+      display: block;
+    }
+
+    #unsubscribe-here .center-body-on-mobile {
+      margin-top: -4em;
+    }
+
+    .unsubscribe-here-form {
+      padding: 2em 1em;
+      background: #745387;
+      border-radius: 1.5em;
+      box-shadow: 0px 1px 25px rgba(0, 0, 0, 0.25);
+
+      /* negative top margin moves the form closer to the screen's mid line */
+      margin: 0 1.5em;
+    }
+
+    .unsubscribe-here-form #subscriber-ziki-domain {
+      background-color: #fff;
+      border: none;
+    }
+  }
+</style>
+
+<!-- Unsubscribe Modal -->
+<div
+  class="modal fade"
+  id="unsubscribe-here"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="unsubscribe-here-label"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header justify-content-center">
+        <div class="row row-container align-items-center">
+          <div class="col-3">
+            <img
+              src="/resources/themes/ghost/assets/img/white-logo.png"
+              class="unsubscribe-here-logo"
+              alt="ziki logo"
+            />
+          </div>
+          <div class="col-4 col-md-8 title-container">
+            <h2 class="modal-title font-weight-bold" id="unsubscribe-here-label">
+              Unsubscribe
+            </h2>
+			<p>
+              Are you sure you want to unsubscribe from {{ domain }} on your
+              timeline?
+            </p>
+          </div>
+          <div class="col-5 col-md-1 align-self-start">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+		</div>
+      </div>
+      <div class="modal-body py-5">
+        <div class="center-body-on-mobile text-white">
+          <h2 class="hide-above-mobile text-center mb-3 font-weight-bold">
+            Unsubscribe
+          </h2>
+		  <form class="unsubscribe-here-form" method="post">
+            <div class="hide-above-mobile text-center">
+              <p>
+                Are you sure you want to unsubscribe from {{ domain }} on your
+              timeline?
+              </p>
+            </div>
+            <div class="form-row justify-content-center">
+              <div class="col-12 col-md-7 mx-0 mx-md-3 pb-4 pb-md-0">
+                <label for="subscriber-ziki-domain" class="sr-only"
+                  >Subscriber's Ziki domain</label
+                >
+                <input
+                  type="url"
+                  class="form-control"
+                  name="subscriber-ziki-domain"
+                  id="subscriber-ziki-domain"
+                  placeholder="Enter subscriber's domain URL"
+                  required
+                />
+              </div>
+			<div
+                class="col-12 col-md-2 mx-0 mx-md-3 d-flex justify-content-center justify-content-md-end"
+            >
+                <div><button type="submit" class="btn">Unsubscribe</button></div>
+            </div>
+		  </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

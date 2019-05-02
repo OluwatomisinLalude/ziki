@@ -1,0 +1,210 @@
+{% set domain = "ziki.hng.tech" %}
+
+<style>
+  :root {
+    --ziki-purple: #280a66;
+  }
+
+  #subscribe-here .modal-content {
+    border-radius: 2em;
+  }
+
+  #subscribe-here .modal-header {
+    background: linear-gradient(180deg, #973793 0%, rgba(134, 64, 131, 0) 100%),
+      #3b0e75;
+    border-top-left-radius: 1.9em;
+    border-top-right-radius: 1.9em;
+    color: #fff;
+    padding: 2em 1.5em;
+    border-bottom: none;
+    box-shadow: 0 3px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  #subscribe-here .modal-header .close {
+    color: #fff;
+    font-size: 3em;
+    opacity: 1;
+  }
+
+  #subscribe-here .modal-header .row-container {
+    width: 100%;
+  }
+
+  .subscribe-here-logo {
+    max-width: 40px;
+    width: 100%;
+  }
+
+  #subscribe-here .hide-above-mobile {
+    display: none;
+  }
+
+  .subscribe-here-form .form-control {
+    box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25);
+  }
+
+  .subscribe-here-form #guest-ziki-domain {
+    /* browser icon that shows in the text field */
+    background: url('/resources/themes/ghost/assets/img/browser-icon.png')
+      no-repeat center;
+    background-image: url('/resources/themes/ghost/assets/img/browser-icon.svg');
+    background-position: 4px;
+    background-repeat: no-repeat;
+
+    /* indent text so it's not covered by icon */
+    padding-left: 2.5em;
+    box-sizing: border-box;
+  }
+
+  .subscribe-here-form .btn {
+    color: #fff;
+    background-color: var(--ziki-purple);
+  }
+
+  @media screen and (max-width: 767px) {
+    #subscribe-here .modal-dialog {
+      height: 100%;
+      margin: 0;
+      background: linear-gradient(
+          180deg,
+          #973793 0%,
+          rgba(134, 64, 131, 0) 100%
+        ),
+        #3b0e75;
+      overflow-y: hidden;
+    }
+
+    #subscribe-here .title-container * {
+      /* hide everything in the title-container to create empty space */
+      display: none;
+    }
+
+    #subscribe-here .modal-dialog {
+      max-width: 100%;
+    }
+
+    #subscribe-here .modal-content,
+    #subscribe-here .modal-header {
+      border-radius: 0;
+      background: none;
+      border: none;
+    }
+
+    #subscribe-here .modal-content {
+      height: 100%;
+    }
+
+    #subscribe-here .modal-header {
+      box-shadow: none;
+    }
+
+    #subscribe-here .modal-body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #subscribe-here .hide-above-mobile {
+      display: block;
+    }
+
+    #subscribe-here .center-body-on-mobile {
+      margin-top: -4em;
+    }
+
+    .subscribe-here-form {
+      padding: 2em 1em;
+      background: #745387;
+      border-radius: 1.5em;
+      box-shadow: 0px 1px 25px rgba(0, 0, 0, 0.25);
+
+      /* negative top margin moves the form closer to the screen's mid line */
+      margin: 0 1.5em;
+    }
+
+    .subscribe-here-form #guest-ziki-domain {
+      background-color: #fff;
+      border: none;
+    }
+  }
+</style>
+
+<!-- Subscribe Here Modal -->
+<div
+  class="modal fade"
+  id="subscribe-here"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="subscribe-here-label"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header justify-content-center">
+        <div class="row row-container align-items-center">
+          <div class="col-3">
+            <img
+              src="/resources/themes/ghost/assets/img/white-logo.png"
+              class="subscribe-here-logo"
+              alt=""
+            />
+          </div>
+          <div class="col-4 col-md-8 title-container">
+            <h2 class="modal-title font-weight-bold" id="subscribe-here-label">
+              Subscribe
+            </h2>
+            <p>
+              Stay up to date with the latest posts from {{ domain }} on your
+              timeline
+            </p>
+          </div>
+          <div class="col-5 col-md-1 align-self-start">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body py-5">
+        <div class="center-body-on-mobile text-white">
+          <h2 class="hide-above-mobile text-center mb-3 font-weight-bold">
+            Subscribe
+          </h2>
+          <form id="rss" action="/addrss" method="post" class="subscribe-here-form">
+            <div class="hide-above-mobile text-center">
+              <p>
+                Stay up to date with the latest posts from {{ domain }} on your
+                timeline
+              </p>
+            </div>
+            <div class="form-row justify-content-center">
+              <div class="col-12 col-md-7 mx-0 mx-md-3 pb-4 pb-md-0">
+                <label for="guest-ziki-domain" class="sr-only"
+                  >Your domain</label
+                >
+                <input
+                  type="url"
+                  class="form-control"
+                  name="domain"
+                  id="guest-ziki-domain"
+                  placeholder="Enter Rss URL"
+                  required
+                />
+              </div>
+              <div
+                class="col-12 col-md-2 mx-0 mx-md-3 d-flex justify-content-center justify-content-md-end"
+              >
+                <div><button id="submitButton" type="submit" class="btn">Subscribe</button></div>
+              </div>
+            </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

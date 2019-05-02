@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Lucid</title>
+
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<!--	<link rel="stylesheet" href="style.css">-->
+    <link rel="stylesheet" href="./vendors/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Lato');
+      
+        :root {
+          --ziki-purple: #280966;
+        }
+      
+        /* ---------------------------------------------------
+            SIDEBAR STYLE
+        ----------------------------------------------------- */
+        .sidebar-container {
+          background: rgba(255, 255, 255, 0);
+          color: #fff;
+          position: absolute;
+          top: 0;
+          z-index: 2;
+        }
+      a {
+        color: #000000;
+      }
+        .sidebar-container.sidebar-shown {
+          min-height: 100%;
+          background: linear-gradient(180deg, #973793 0%, rgba(134, 64, 131, 0) 100%),
+            #3b0e75;
+        }
+      
+        .sidebar-logo {
+          display: none;
+        }
+      
+        .sidebar-shown .sidebar-logo {
+          display: initial;
+        }
+      
+        .sidebar-shown .owner-info {
+          display: none;
+        }
+      
+        .sidebar-close {
+          display: none;
+        }
+      
+        .sidebar-shown .sidebar-close {
+          display: initial;
+          border: none;
+          font-size: 3em;
+          padding: 0 0.3em;
+          color: #fff;
+          background: rgba(255, 255, 255, 0);
+        }
+      
+        .side-trigger {
+          background: var(--ziki-purple);
+          color: #fff;
+        }
+      
+        .sidebar-shown .side-trigger {
+          display: none;
+        }
+      
+        #sidebar.shown {
+          display: block;
+        }
+      
+        #sidebar {
+          display: none;
+        }
+      
+        #sidebar ul li a {
+          padding: 10px;
+          font-size: 1.7em;
+          font-weight: bold;
+          font-family: 'Lato', sans-serif;
+          display: block;
+          color: #fff;
+          text-decoration: none;
+        }
+      
+        #sidebar ul li a:hover {
+          color: var(--ziki-purple);
+        }
+      
+        #sidebar ul li.shown > a,
+        a[aria-expanded='true'] {
+          color: #fff;
+          background: #6d7fcc;
+        }
+      
+        a[data-toggle='collapse'] {
+          position: relative;
+        }
+      
+        .dropdown-toggle::after {
+          display: block;
+          position: absolute;
+          top: 50%;
+          right: 20px;
+          transform: translateY(-50%);
+        }
+      
+        .side-content {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+        }
+        .width-100-150px {
+          width: 100px;
+        }
+      
+        .profile-pic {
+          width: 140px;
+          height: 140px;
+          border-radius: 50%;
+          border: 1.5px solid #280a66;
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          /*background: url(); */
+          /*display: inline-block;*/
+          margin-bottom: 15px;
+          margin-top: -10px;
+          background: #280a66;
+        }
+      
+        .owner-name {
+          font-style: italic;
+          font-weight: bold;
+          color: #280a66 !important;
+        }
+      
+        .bio {
+          color: #280a66 !important;
+        }
+      
+        .login-button {
+          background-color: #280a66 !important;
+          padding: 5px 20px;
+          color: white !important;
+        }
+      
+        #sidebar ul {
+          margin-top: 60px;
+          list-style: none;
+          text-align: left;
+        }
+      
+        #sidebar li {
+          margin: 7px;
+        }
+      
+        .navigation-bar {
+          margin-top: 20px;
+          margin-bottom: 20px;
+        }
+      
+        .mobile-login {
+          background: #fff;
+          color: #8d348f;
+          font-weight: bold;
+          font-size: 1.7em;
+        }
+      
+        .sidebar-bubble {
+          display: none;
+        }
+        .text-14px {
+          font-size: 14px;
+        }
+        .mb {
+          margin-bottom: 5rem !important;
+        }
+      
+        .s-avatar {
+          width: 20px;
+          height:20px;
+        }
+        .signin-btn {
+          padding: 0.5rem;
+        }
+        @media screen and (min-width: 500px) and (max-width: 757px) {
+          #sidebar ul {
+            margin-top: 0px;
+          }
+      
+          #sidebar ul li a {
+            padding: 4px;
+            font-size: 1.1em;
+          }
+      
+          .mobile-login {
+            font-size: 1em;
+          }
+        }
+      
+        @media screen and (min-width: 576px) and (max-width: 767px) {
+          #sidebar ul {
+            margin-top: 20px;
+          }
+      
+          #sidebar li {
+            margin: 0;
+            font-size: 0.8em;
+          }
+      
+          #sidebar ul li a {
+            padding: 5px;
+            font-size: 1.2em;
+          }
+      
+          .mobile-login {
+            font-size: 1em;
+          }
+        }
+      
+        @media (min-width: 768px) {
+          .sidebar-container {
+            width: 25%;
+          }
+      
+          #sidebar,
+          #sidebar.shown {
+            display: block;
+          }
+      
+          .sidebar-container,
+          .sidebar-container.sidebar-shown {
+            background: #fff;
+          }
+      
+          .side-trigger {
+            display: none;
+          }
+      
+          .owner-info,
+          .sidebar-shown .owner-info {
+            display: block;
+          }
+      
+          #sidebar ul li a {
+            color: var(--ziki-purple);
+            padding: 4px;
+            font-size: 1em;
+          }
+      
+          #sidebar ul li a:hover {
+            background: rgba(40, 10, 102, 0.2);
+            border-radius: 0px 10px 10px 0px;
+          }
+      
+          .mobile-login {
+            display: none;
+          }
+      
+          .sidebar-bubble {
+            display: block;
+            padding: 10em 0 0 1em;
+          }
+          .width-100-150px {
+          width: 150px;
+        }
+        }
+      
+        @media screen and (min-height: 500px) {
+          .sidebar-bubble {
+            /* push sidebar bubble further down the page */
+            padding-top: 12em;
+          }
+        }
+      
+        @media screen and (min-height: 1000px) {
+          .sidebar-bubble {
+            /* push sidebar bubble further down the page */
+            padding-top: 15em;
+          }
+        }
+      
+        /* beginning of styling for the login modal */
+        .login-modal-popup-left-column {
+          background: linear-gradient(180deg, #973793 0%, rgba(134, 64, 131, 0) 100%),
+            #3b0e75;
+          border-top-left-radius: 20px;
+          border-bottom-left-radius: 20px;
+        }
+      
+        .login-modal-popup-right-column {
+          background: #ffffff;
+          box-shadow: 0px 1px 25px rgba(0, 0, 0, 0.25);
+          border-top-right-radius: 20px;
+          border-bottom-right-radius: 20px;
+          width: 87%;
+          margin: auto;
+        }
+      
+        .login-modal-border-radius {
+          border-radius: 5px;
+        }
+      
+        .ziki-Welcome-msg {
+          font-family: Lato;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 36px;
+          line-height: normal;
+        }
+      
+        .ziki-about-msg {
+          font-family: Lato;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: normal;
+        }
+      
+        .login-msg {
+          font-family: Lato;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: normal;
+          letter-spacing: 0.1em;
+          color: #111;
+        }
+      
+        .login-dialog {
+          padding: 30px;
+          padding-top: 100px;
+          padding-bottom: 50px;
+          box-sizing: border-box;
+        }
+      
+        .google-signin-btn {
+          cursor: pointer;
+          background: #ffffff;
+          box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25);
+          border-radius: 10px;
+        }
+      
+        .facebook-signin-btn {
+          cursor: pointer;
+          background: #ffffff;
+          box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25);
+          border-radius: 10px;
+          margin-top: 25px;
+        }
+      
+        .width-250px {
+          width: 250px;
+        }
+      
+        .bottom-msg {
+          font-family: Lato;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 9px;
+          line-height: normal;
+          text-align: justify;
+          color: #111;
+        }
+      
+        .bio-text {
+          color: #000000;
+        }
+      
+        .auth-link {
+          text-decoration: none;
+          color: #111;
+        }
+      
+        .auth-link:hover {
+          text-decoration: none;
+          color: #111;
+        }
+      
+        .greetings {
+          margin-top: 70px;
+        }
+      
+        .modal-dialog-container {
+          margin: 150px auto;
+        }
+      
+        .logo {
+          padding-left: 70px;
+          margin-top: 50px;
+        }
+      
+        .modal-close-button {
+          display: none;
+        }
+      
+        .email-login-button {
+          background-color: transparent;
+          border: none;
+        }
+      
+        .email-input {
+          padding: 0.4rem;
+        }
+      
+        .optional-login-text {
+          width: 100%;
+          text-align: center;
+          border-bottom: 1px solid #979797;
+          line-height: 0.1em;
+          margin: 10px 0 20px;
+          color: #979797;
+        }
+        .optional-login-text span {
+          background: #fff;
+          padding: 0 10px;
+        }
+        .signin-btn {
+          background-color: #ffffff;
+          border-radius: 0.6rem;
+          border: none;
+          box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25);
+          padding: 0.5rem 1rem;
+        }
+        .email-login-container {
+          align-items: center;
+          padding: 0.5rem 1rem;
+          background-color: #ffffff;
+          box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25);
+          border-radius: 0.6rem;
+          font-size: 1.1rem;
+        }
+      
+        .width-100pc {
+          width: 100%;
+        }
+      
+        .no-border {
+          border: none;
+        }
+      
+        .magic-msg {
+          margin: 3rem auto 3rem auto;
+          width: 250px;
+        }
+      
+        @media only screen and (max-width: 767px) {
+          /* modal styling For mobile phones: */
+          .modal-close-button {
+            display: initial;
+          }
+      
+          #modalLoginForm,
+          #modalLoginForm .modal-content {
+            /* bootstrap sets background of .modal-content */
+            /* so it must also be overridden along with #modalLoginForm */
+            background: -webkit-linear-gradient(
+                180deg,
+                #973793 0%,
+                rgba(134, 64, 131, 0) 100%
+              ),
+              #3b0e75 !important;
+          }
+      
+          #modalLoginForm .modal-content {
+            border: none;
+          }
+      
+          .login-dialog {
+            padding: 50px 30px;
+            box-sizing: border-box;
+          }
+      
+          .greetings {
+            margin-top: 20px;
+            margin-bottom: 20px;
+          }
+      
+          .logo {
+            margin-top: 0px;
+            box-sizing: border-box;
+          }
+      
+          .modal-dialog-container {
+            margin: 100px auto;
+          }
+      
+          .login-msg {
+            font-family: Lato;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: normal;
+            margin-bottom: 20px;
+            letter-spacing: 0.1em;
+            color: #ffffff;
+          }
+      
+          .bottom-msg {
+            font-family: Lato;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 9px;
+            line-height: normal;
+            text-align: justify;
+            color: #ffffff;
+          }
+        }
+      
+        @media screen and (min-width: 768px) {
+          /* login modal for tabs */
+          .modal-content {
+            width: 125%;
+            margin: auto;
+            left: -12%;
+          }
+          .width-100-150px {
+          width: 150px;
+        }
+        }
+      
+        @media screen and (min-width: 992px) {
+          /* login modal for PC */
+          .auth-link {
+            font-size: 1.4rem;
+          }
+      
+          .bottom-msg {
+            font-size: 0.7rem;
+          }
+        }
+      </style>
+</head>
+
+<body>
+<!-- content goes here -->
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            <!-- for the sidebar -->
+            <div class="container-fluid py-3 sidebar-container position-fixed">
+  <div class="row">
+    <div class="col-6 text-left">
+      <button
+        type="button"
+        id="sidebarCollapse"
+        class="btn btn-info side-trigger"
+      >
+        <i class="fas fa-align-left"></i> <span></span>
+      </button>
+      <img
+        src="resources/themes/ghost/assets/img/faviconimage.png"
+        alt="logo"
+        class="sidebar-logo p-3"
+      />
+    </div>
+    <div class="col-6 text-right">
+      <button type="button" class="sidebar-close">&times;</button>
+    </div>
+  </div>
+
+  <!-- Owner profile details -->
+  <div id="sidebar" class="">
+    <div class="owner-info">
+      <div class="row">
+        <div class="col-12 side-content pt-5">
+          <div>
+            <img class="img-fluid profile-pic" src="../assets/img/profiledp.png" />
+          </div>
+          <h4 class="owner-name">DESTINY IHEJIRIKA</h4>
+          <span class="text-center bio-text p-3 pt-1 font-italic w-75 mx-auto"
+            >Front end developer, ui/ux developer, friend and traveller.</span
+          >
+          <!-- <h6 class="bio">Owner's Bio</h6>
+          {% if not user.email %}
+          <a href="javascript:void(0)">
+            <button
+              class="btn btn-default login-button"
+              type="button"
+              data-toggle="modal"
+              data-target="#modalLoginForm"
+            >
+              Login
+            </button>
+          </a>
+          {% else %}
+          <a href="/logout">
+            <button class="btn btn-default login-button" type="button">
+              Logout
+            </button>
+          </a>
+          {% endif %} -->
+        </div>
+      </div>
+
+      <hr />
+    </div>
+
+    <!-- side bar menu links -->
+    <div class="row">
+      <div class="col-12 col-sm-8 mx-md-auto">
+        <ul class="pl-0 mt-0">
+          {% if user.role == 'admin' %}
+          <li><a href="/timeline">TIMELINE</a></li>
+          <li><a href="/published-posts">MY POSTS</a></li>
+          <li><a href="/videos">VIDEOS</a></li>
+          <li><a href="/portfolio">PORTFOLIO</a></li>
+          <li><a href="/contact-us">CONTACT</a></li>
+          {% elseif user.role == 'guest' %}
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About Ziki</a></li>
+          <li><a href="/contact-us">Contact Me</a></li>
+          {% else %}
+          <li><a href="/">Home</a></li>
+          <li><a href="/published-posts">Published Posts</a></li>
+          <li><a href="/profile">Profile</a></li>
+          <li><a href="/about">About Ziki</a></li>
+          <li><a href="/contact-us">Contact Me</a></li>
+          {% endif %}
+        </ul>
+      </div>
+      <div class="pl-4 col-12">
+        <button
+          type="button"
+          class="mobile-login px-5 px-sm-3 px-md-5 py-2 mt-2 mt-sm-0 mt-md-2 btn btn-primary"
+        >
+          Login
+        </button>
+      </div>
+    </div>
+
+    <!-- bubble -->
+    <div class="row align-items-end sidebar-bubble">
+      <div class="col-12">
+        <img src="/resources/themes/ghost/assets/img/bubbles.png" alt="" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Login Modal -->
+<div
+  class="modal fade"
+  id="modalLoginForm"
+  style="background: rgba(255, 255, 255, 0.92);"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg modal-dialog-container" role="document">
+    <div class="modal-content">
+      <div class="row login-modal-border-radius">
+        <div class="col-md-6 login-modal-popup-left-column">
+          <div class="row">
+            <div class="col-6 logo">
+              <img src="/resources/themes/ghost/assets/img/faviconimage.png" />
+            </div>
+            <div class="col-6">
+              <button
+                class="modal-close-button"
+                style="background: transparent; color:#fff; border: none; font-size: 3rem; position: relative;top: -30px;left: 60px;"
+                data-dismiss="modal"
+              >
+                &times;
+              </button>
+            </div>
+            <div class="col-md-12 greetings">
+              <h3 class="text-center ziki-Welcome-msg" style="color:#fff;">
+                Welcome to Ziki
+              </h3>
+              <p class="text-center ziki-about-msg" style="color:#fff;">
+                Simplify your blogging experience.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- for the login auth -->
+        <div class="login-modal-popup-right-column col-md-6 text-center login-form">
+          <p class="mt-5 mb-5">LOGIN TO CONTINUE</p>
+          <div
+            class="signin-btn d-flex justify-content-between email-login-container"
+          >
+            <input class="host" type="hidden" value="{{host}}">
+            <input
+              type="email"
+              placeholder="Enter your Email Address"
+              class="width-100pc ml-1 no-border text-14px"
+              required
+            />
+              <svg
+                width="20"
+                height="16"
+                viewBox="0 0 30 26"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 25.7143L30 12.8571L0 0V10L21.4286 12.8571L0 15.7143V25.7143Z"
+                  fill="#682681"
+                />
+              </svg>
+          </div>
+          <p class="optional-login-text mt-5 mb-5">
+            <span>or sign in with</span>
+          </p>
+          <div class="d-flex justify-content-around mb-5 mb">
+            <a href="https://auth.techteel.com/login/facebook?type=login&url={{host}}" class="width-100-150px d-flex signin-btn align-items-center justify-content-between">
+              <img src="/resources/themes/ghost/assets/img/facebook.png" alt="" class="s-avatar">
+              <p class="m-0">Facebook</p>
+            </a>
+            <a href="https://auth.techteel.com/login/google?type=login&url={{host}}" class="width-100-150px d-flex signin-btn align-items-center justify-content-between">
+              <img src="/resources/themes/ghost/assets/img/google.png" alt="" class="s-avatar">
+              <p class="m-0">Google</p>
+            </a>
+          </div>
+        </div>
+          <div class="login-modal-popup-right-column col-md-6 text-center login-mail-sent">
+            <p class=" mt-5 fa-2x">
+              Check your Email
+            </p>
+            <img class="magic-link-img" src="resources/themes/ghost/assets/img/magic-link-img.png" alt="magic link image">
+            <p class="magic-msg">
+              
+            </p>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+
+        <!-- for any other part of the page -->
+        <div class="col-12 col-sm-9 two">
+            <div class="row">
+                <div class="col-12 pb-4 pt-4">
+                    <h6 style="color:#871E99">PORTFOLIO</h6>
+                    <h3>HNG Folio</h3>
+                </div>
+                <div class="col-10 pb-4 pt-4">
+                    <img width="100%" src="../assets/img/portfolio-image.png" alt="HNG Folio picture">
+                </div>
+                <div class="col-10">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque aliquam excepturi sapiente voluptatum itaque, corrupti dolorem laudantium iure velit voluptates odit quae omnis libero et, veritatis laborum, maxime natus adipisci fugit pariatur! Nulla modi omnis assumenda, laudantium magni veritatis dicta sunt incidunt praesentium earum iste amet nostrum ipsum harum nesciunt quis. Voluptate ut fugiat accusamus architecto eveniet reiciendis non quaerat cupiditate placeat totam dolores quidem ratione in molestiae voluptas sed eos, repellendus iure adipisci voluptatum?</p>
+                </div>
+                
+                <div class="col-10">
+                    <div class="row">
+                        <div class="col-6 pb-4 pt-4">
+                            <img src="../assets/img/portfolio-banner-image.png" class="float-left" alt="descriptive laptop image">
+                        </div>
+                        
+                        <div class="col-6 pb-4 pt-4">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam tenetur voluptatibus molestiae quisquam aliquid nam aperiam est soluta fuga accusantium, architecto minus, commodi numquam aut ipsam expedita.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-10">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque aliquam excepturi sapiente voluptatum itaque, corrupti dolorem laudantium iure velit voluptates odit quae omnis libero et, veritatis laborum, maxime natus adipisci fugit pariatur! Nulla modi omnis assumenda, laudantium magni veritatis dicta sunt incidunt praesentium earum iste amet nostrum ipsum harum nesciunt quis. Voluptate ut fugiat accusamus architecto eveniet reiciendis non quaerat cupiditate placeat totam dolores quidem ratione in molestiae voluptas sed eos, repellendus iure adipisci voluptatum?</p>
+            </div>
+
+            <div class="col-12 mb-4" style="background-color:#F2F2F2">
+                <div class="col-10 pt-4 pb-0 pl-0" style="display:flex;">
+                    <div class="col-8 pl-0 pt-4">
+                        <h2>HNG Folio</h2>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum asperiores explicabo at consectetur laborum totam hic corporis dicta? Ratione voluptates laboriosam accusamus corporis aliquam, error nulla incidunt ipsum eos sint?</p>
+                    </div>
+                    <div class="col-4">
+                        <img src="../assets/img/portfolio-mobile.png" alt="mobile app picture" srcset="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 mt-4" style="background-color:#F2F2F2">
+                <div class="col-10">
+                    <span class="pl-4 pr-8" style="text-align:left">Nike App</span>
+                    <span style="text-align:center">|</span>
+                    <span class="pl-8 pr-4" style="text-align:right">Ziki</span>
+                </div>
+            </div>
+                   
+                
+        </div>
+
+        
+        </div>
+    </div>
+</div>
+
+<script src="vendors/jquery.min.js"></script>
+<script src="vendors/bootstrap-4.0.0-beta.3-dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
+
