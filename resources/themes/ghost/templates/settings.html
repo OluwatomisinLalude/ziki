@@ -1,92 +1,285 @@
-{% set title = "Themes"%}
+{% set title = "Settings"%}
 {% extends 'layout.html' %} {% block page_content%}
 
 <!-- content goes here -->
 
-<div class="container">
+<div id="content" class="container">
     <div class="row">
-        <div class="col-12 col-sm-1"></div>
-        <div class="col-lg-11 col-md-8 col-sm-11 col-xs-11 mt-3">
+        <div class="col-lg-11 col-md-11 col-sm-12 col-xs-12 mt-3 offset-md-1 offset-lg-1">
+
+            {% set navigation = [
+            {'href': 'settings', 'caption': 'Settings'},
+            {'href': 'profile', 'caption': 'Profile'},
+            {'href': 'subscriptions', 'caption': 'Subscriptions'}
+            ]
+            %}
 
             {% include "navtabs.html" with {'current_page': 'settings'} %}
 
             <div class="row themes-main py-2">
-                <div class="col themes-content-area pb-5 mt-5 mr-3">
-                    <div class="row px-3 pt-4 pb-5">
+                <div class="col themes-content-area pb-5 mt-5 mr-3 px-0">
 
-                        <div class="col-lg-5 col-md-3 col-sm-6 col-6 order-lg-1 order-md-1 order-sm-1 order-1">
-                            <h3 class="themes-edit-title">Themes<span class="badge badge-round ml-3">4</span></h3>
+                    <div class="row d-flex flex-column px-3 pb-4">
+
+                        <div class="col-lg-5 col-md-3 col-sm-12 col-xs-12 order-lg-1 order-md-1 order-sm-1 order-1 pb-3 px-0">
+                            <h6 class="h6 mb-0 font-weight-bold">Comment Plugin</h6>
                         </div>
 
-                        <div class="col-lg-4 col-md-5 select-option col-sm-12 order-lg-2 order-md-2 order-sm-2 order-2">
-                            <form><input class="form-control form-control-no-border rounded-0 search-box" type="text" placeholder="Search installed themes"></form>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 switch-toggle order-lg-2 order-md-2 order-sm-2 order-1 d-flex align-items-center px-0 pb-5">
+                            <div class="lucid-custom-select w-100">
+                                <select class="w-100" placeholder="Select Plugin" id="comment_select">
+                                    <option selected>Select Plugin</option>
+                                    <option value="disqus">Disqus</option>
+                                    <option value="facebook">Facebook</option>
+                                </select>
+                            </div>
                         </div>
 
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-6 switch-toggle order-lg-3 order-md-3 order-sm-1 order-1 d-flex align-items-center">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 order-lg-3 order-md-3 order-sm-3 order-1 pb-3 px-0 mb-4 d-none"
+                            id="facebook-cont">
+                            <h6 class="h6 mb-3 font-weight-bold">Facebook Comment Credentials</h6>
+                            <form>
+                                <div class="row d-flex flex-row justify-content-start align-items-center pr-5">
+                                    <div class="col-md-5">
+                                        <input type="text" class="form-control" id="appid" aria-describedby="appid"
+                                            value="{{FACEBOOK_APP_ID}}" placeholder="Facebook App ID" required>
+                                    </div>
+                                    <div class="col-md-5 my-2">
+                                        <input type="url" class="form-control" id="domainurl" aria-describedby="appid"
+                                            value="{{FACEBOOK_DOMAIN_URL}}" placeholder="Domain URL" required>
+                                    </div>
+                                    <button type="submit" class="col-sm-2 btn profile-submit-btn text-white text-upppercase mx-sm-3"
+                                        id="btnFbcomment">
+                                        Update</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 switch-toggle order-lg-3 order-md-3 order-sm-1 order-1 d-flex align-items-center px-0 pb-2">
+                            <h6 class="switch-text flex-grow-1 font-weight-normal">Enable Videos Page</h6>
                             <label class="switch d-flex align-items-center">
-                                <input type="checkbox"><span class="slider round"></span>
-                                <h6 class="switch-text flex-grow-1">Light Mode</h6>
+                                <input type="checkbox" class="setting_checkbox" data-action="ENABLE_VIDEOS_PAGE" {% if
+                                    ENABLE_VIDEOS_PAGE=="true" %} checked {% endif %}><span class="slider round"></span>
+                            </label>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 switch-toggle order-lg-3 order-md-3 order-sm-1 order-1 d-flex align-items-center px-0">
+                            <h6 class="switch-text flex-grow-1 font-weight-normal">Enable Portfolio Page</h6>
+                            <label class="switch d-flex align-items-center">
+                                <input type="checkbox" class="setting_checkbox" data-action="ENABLE_PORTFOLIO_PAGE" {%
+                                    if ENABLE_PORTFOLIO_PAGE=="true" %} checked {% endif %}><span class="slider round"></span>
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <div class="row d-flex flex-column px-3 pt-4 pb-4">
+
+                        <div class="col-lg-5 col-md-3 col-sm-6 order-lg-1 order-md-1 order-sm-1 order-1 pb-3 px-0">
+                            <h6 class="h6 mb-0 font-weight-bold">Themes</h6>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-6 switch-toggle order-lg-3 order-md-3 order-sm-1 order-1 d-flex align-items-center px-0">
+                            <h6 class="switch-text flex-grow-1 font-weight-normal">{% if THEME_STATE == "false" %}
+                                Light Mode {% else %} Dark Mode {% endif %}</h6>
+                            <label class="switch d-flex align-items-center">
+                                <input type="checkbox" class="setting_checkbox" data-action="THEME_STATE" {% if
+                                    THEME_STATE=="true" %} checked {% endif %}><span class="slider round"></span>
                             </label>
                         </div>
                     </div>
 
-                    <div class="row themes-main px-3 themes-cont">
+                    <!-- theme list: the idea is to load from a theme.json file -->
+                    {% set themeList = [
+                    {'name': 'Ghost', 'imagePath': '/resources/themes/ghost/assets/img/theme1.png', isActive: true,
+                    color: '#280A66'},
+                    {'name': 'Ruby', 'imagePath': '/resources/themes/ghost/assets/img/theme2.png', isActive: false,
+                    color: '#C61639'},
+                    {'name': 'Pine', 'imagePath': '/resources/themes/ghost/assets/img/theme3.png', isActive: false,
+                    color: '#4A794F'},
+                    ]
+                    %}
+
+                    <div class="row themes-main px-0 themes-cont">
                         <!-- just add backend looping code here: use of the div as template for looping -->
-                        <div class="col-md-5 col-sm-6 pb-2 theme-item mt-3" data-name="Ghost">
-                            <img src="/resources/themes/ghost/assets/img/theme1.png" alt="" class="img-fluid w-100">
-                            <div class="theme-state theme-active"><span class="text-uppercase">Active:</span> Ghost</div>
+                        {% for theme in themeList %}
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xm-12 pb-2 theme-item mt-3 d-flex flex-column"
+                            data-name="{{ theme.name }}" title="Click to set {{ theme.name }} theme">
+                            <figure class="px-0 py-0 mb-0">
+                                <img src="{{ theme.imagePath }}" alt="" class="img-fluid w-100 rounded-top">
+                                {% if theme.isActive %} <p class="d-md-none"></p> {% endif %}
+                            </figure>
+                            <div class="theme-state d-flex justify-content-start align-items-center px-3 py-2 rounded-bottom"
+                                {% if theme.color %} style="background-color:{{ theme.color }};" {% endif %}>
+                                <p class="text-white my-0 align-self-center">{{ theme.name }}</p>
+                            </div>
                         </div>
-
-                        <div class="col-md-5 col-sm-6 pb-2 theme-item mt-3" data-name="Canery">
-                            <img src="/resources/themes/ghost/assets/img/theme2.png" alt="" class="img-fluid w-100">
-                            <div class="theme-state">Canery</div>
-                        </div>
-
-                        <div class="col-md-5 col-sm-6 pb-2 theme-item mt-3" data-name="Jumbo">
-                            <img src="/resources/themes/ghost/assets/img/theme3.png" alt="" class="img-fluid w-100">
-                            <div class="theme-state">Jumbo</div>
-                        </div>
+                        {% endfor %}
                         <!-- /end backend looping code here -->
                     </div>
                     <script>
                         window.addEventListener('load', function () {
 
-                            //handle filter
-                            var theme_cont = document.querySelector('.themes-cont');
-                            var theme_list = document.querySelectorAll('.themes-cont div.theme-item'); //each theme div
-                            var search_input = document.querySelector('.search-box');
-                            var badge = document.querySelector('.badge-round');
+                            var app = (function () {
 
-                            //not found temp 
-                            var notfound = document.createElement('p');
-                            notfound.classList.add('notfound');
-                            notfound.innerText = 'No such theme found';
+                                return {
+                                    handleServerRequest: function (action, value, cb) {
+                                        console.log(action);
+                                        var url = '/appsetting';
+                                        var fd = new FormData();
+                                        fd.append('field', action);
+                                        fd.append('value', value);
+                                        fetch(url, {
+                                            method: "POST",
+                                            body: fd,
+                                        })
+                                            .then(response => response.json())
+                                            .then((data) => {
+                                                console.log(data);
+                                                (cb && cb !== undefined && typeof cb == 'function') && cb(data);
+                                            });
+                                    },
+                                    initLucidSelect: function () {
+                                        /*------------ handle custom select dropdown ---------------*/
+                                        var x, i, j, selElmnt, a, b, c;
+                                        /*look for any elements with the class "custom-select":*/
+                                        x = document.getElementsByClassName("lucid-custom-select");
+                                        for (i = 0; i < x.length; i++) {
+                                            selElmnt = x[i].getElementsByTagName("select")[0];
+                                            app.handleCustomSelect(selElmnt);
+                                            /*for each element, create a new div that will act as the selected item:*/
+                                            a = document.createElement("div");
+                                            a.setAttribute("class", "select-selected");
+                                            a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+                                            x[i].appendChild(a);
+                                            /*for each element, create a new div that will contain the option list:*/
+                                            b = document.createElement("div");
+                                            b.setAttribute("class", "select-items select-hide");
+                                            for (j = 1; j < selElmnt.length; j++) {
+                                                /*for each option in the original select element,
+                                                create a new div that will act as an option item:*/
+                                                c = document.createElement("div");
+                                                c.innerHTML = selElmnt.options[j].innerHTML;
+                                                c.addEventListener("click", function (e) {
+                                                    /*when an item is clicked, update the original select box,
+                                                    and the selected item:*/
+                                                    var y, i, k, s, h;
+                                                    s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+                                                    h = this.parentNode.previousSibling;
+                                                    for (i = 0; i < s.length; i++) {
+                                                        if (s.options[i].innerHTML == this.innerHTML) {
+                                                            s.selectedIndex = i;
+                                                            h.innerHTML = this.innerHTML;
+                                                            y = this.parentNode.getElementsByClassName("same-as-selected");
+                                                            for (k = 0; k < y.length; k++) {
+                                                                y[k].removeAttribute("class");
+                                                            }
+                                                            this.setAttribute("class", "same-as-selected");
+                                                            s.dispatchEvent(new Event('change')); //trigger change
+                                                            break;
+                                                        }
+                                                    }
+                                                    h.click();
+                                                });
+                                                b.appendChild(c);
+                                            }
+                                            x[i].appendChild(b);
+                                            a.addEventListener("click", function (e) {
+                                                /*when the select box is clicked, close any other select boxes,
+                                                and open/close the current select box:*/
+                                                e.stopPropagation();
+                                                closeAllSelect(this);
+                                                this.nextSibling.classList.toggle("select-hide");
+                                                this.classList.toggle("select-arrow-active");
+                                            });
+                                        }
+                                        function closeAllSelect(elmnt) {
+                                            /*a function that will close all select boxes in the document,
+                                            except the current select box:*/
+                                            var x, y, i, arrNo = [];
+                                            x = document.getElementsByClassName("select-items");
+                                            y = document.getElementsByClassName("select-selected");
+                                            for (i = 0; i < y.length; i++) {
+                                                if (elmnt == y[i]) {
+                                                    arrNo.push(i)
+                                                } else {
+                                                    y[i].classList.remove("select-arrow-active");
+                                                }
+                                            }
+                                            for (i = 0; i < x.length; i++) {
+                                                if (arrNo.indexOf(i)) {
+                                                    x[i].classList.add("select-hide");
+                                                }
+                                            }
+                                        }
+                                        /*if the user clicks anywhere outside the select box,
+                                        then close all select boxes:*/
+                                        document.addEventListener("click", closeAllSelect);
 
-                            //event
-                            search_input.addEventListener('keyup', function(e){
-                                var value = e.target.value.trim().toLowerCase();
-                                var found = false;
-                                var count = 0;
+                                    },
+                                    handleCheckbox: function () {
+                                        var checkBoxes = document.querySelectorAll('.setting_checkbox');
+                                        //Attach event listener to checkboxed
+                                        checkBoxes.forEach(function (checkbox) {
+                                            checkbox.addEventListener('change', function () {
+                                                var action = this.dataset.action;
+                                                var value = this.checked;
+                                                app.handleServerRequest(action, value)
+                                            });
+                                        });
+                                    },
+                                    handleCustomSelect: function (selElmnt) {
+                                        //auto trigger change on select
+                                        selElmnt.addEventListener('change', function () {
+                                            var fbCont = document.getElementById('facebook-cont');
+                                            var action = 'COMMENT_PLUGIN';
+                                            var value = this.value;
+                                            if (value === 'facebook') {
+                                                //display a content                                                
+                                                fbCont.classList.remove('d-none');
+                                                return false;
+                                            }
+                                            app.handleServerRequest(action, value) //for disqus only
+                                            !fbCont.classList.contains('d-none') ? fbCont.classList.add('d-none') : null;
+                                        });
+                                    },
+                                    handleFacebookComment: function () {
+                                        var btnFbcomment = document.getElementById('btnFbcomment');
+                                        btnFbcomment.addEventListener('click', function (e) {
+                                            e.preventDefault();
+                                            var selectElem = document.querySelector('.lucid-custom-select select').value;
+                                            var appID = document.getElementById('appid').value;
+                                            var domainUrl = document.getElementById('domainurl').value;
+                                            console.log(selectElem, appID, domainUrl);
+                                            app.handleServerRequest('COMMENT_PLUGIN', selectElem, function () {
+                                                app.handleServerRequest('FACEBOOK_APP_ID', appID, function () {
+                                                    app.handleServerRequest('FACEBOOK_DOMAIN_URL', domainUrl, function (response) {
+                                                        console.log('response from server:', response);
+                                                    })
+                                                })
+                                            })
+                                        });
+                                    },
+                                    init: function () {
+                                        app.initLucidSelect();
+                                        app.handleCheckbox();
+                                        app.handleFacebookComment();
+                                        //read twig data from javascript
+                                        var commentPlugin = '{{ COMMENT_PLUGIN }}';
+                                        //set the select dropdown value 
+                                        options = document.querySelectorAll('.select-items div')
+                                        options.forEach(function (elem) {
+                                            if (elem.innerHTML.toLowerCase() == commentPlugin) {
+                                                elem.dispatchEvent(new Event('click'));
+                                                document.dispatchEvent(new Event('click'));
+                                            }
+                                        });
 
-                                //first remove notfound template if exist
-                                (theme_cont.contains(notfound) ? theme_cont.removeChild(notfound) : null);
-                                
-                                theme_list.forEach(function(elem,index){
-                                    var name = elem.dataset.name.trim().toLowerCase();
-                                    if(name.includes(value)){ //check if the value exist in each theme name
-                                        elem.classList.remove('hide');
-                                        found = true;
-                                        count += 1;
-                                    }else{
-                                        elem.classList.add('hide');
                                     }
-                                });
-
-                                badge.innerText = count;
-                                //if no theme match
-                                !found ? theme_cont.appendChild(notfound) : (theme_cont.contains(notfound) ? theme_cont.removeChild(notfound) : null);
-                            });
-
+                                }
+                            }());
+                            //init app
+                            app.init();
                         }, false);
                     </script>
                 </div>
