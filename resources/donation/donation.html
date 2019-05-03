@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        .donation-body{
+            font-size: 16px;
+            font-family: 'Roboto', sans-serif;
+            color: #ffffff;
+            height: 100vh;
+            background-image: url("Bg.png");
+            background-repeat: no-repeat;
+            background-color: #E5E5E5;
+            text-align: center;
+        }
+        .base-color{
+            color: #6822AD;
+        }
+        .arrow{
+            fill: #6822AD;
+            width: 20px;
+            height: 20px;
+        }
+        .fw-b{
+            font-weight: 400;
+        }
+        .donation{
+            height: 100vh;
+            display: inline-block;
+        }
+        .mt-1{
+            margin-top: 1rem;
+        }
+        .mt-2{
+            margin-top: 2rem;
+        }
+        .mt-3{
+            margin-top: 3rem;
+        }
+        .h2-size{
+            font-size: 20px;
+        }
+        .pt-hh{
+            padding-top: 0.25rem;
+        }
+        .pl-h{
+            padding-left: 0.5rem;
+        }
+        .btn-1{
+            border: 1px solid #6822AD;
+            background: white;
+            border-radius: 5px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+
+        .btn-link{
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        @media only screen and (min-width: 375px){
+            .donation-body{
+                font-size: 16px;
+                padding: 1rem;
+                font-family: 'Roboto', sans-serif;
+                color: #ffffff;
+                height: 100vh;
+                background-image: url("Bg.png");
+                background-repeat: no-repeat;
+                background-color: #E5E5E5;
+                text-align: center;
+                }
+
+            .h2-size{
+                font-size: 30px;
+            }
+            .mb-1{
+                margin-bottom: 1rem;
+            }
+            .mt-1{
+                margin-top: 1rem;
+            }
+            .mt-2{
+                margin-top: 1rem;
+            }
+            .mt-1h{
+                margin-top: 1.5rem;
+            }
+        }
+        @media only screen and (min-width: 425px){
+            .donation-body{
+                font-size: 16px;
+                padding: 1rem;
+                font-family: 'Roboto', sans-serif;
+                color: #ffffff;
+                height: 100vh;
+                background-image: url("Bg.png");
+                background-repeat: no-repeat;
+                background-color: #E5E5E5;
+                text-align: center;
+                }
+
+            .h2-size{
+                font-size: 30px;
+            }
+            .mt-1{
+                margin-top: 1rem;
+            }
+            .mt-2{
+                margin-top: 2rem;
+            }
+            .mt-1h{
+                margin-top: 1.5rem;
+            }
+        }
+        @media only screen and (min-width: 768px){
+            .donation-body{
+                font-size: 18px;
+                padding: 1rem;
+                font-family: 'Roboto', sans-serif;
+                color: #ffffff;
+                height: 100vh;
+                background-image: url("Bg.png");
+                background-repeat: round round;
+                background-color: #E5E5E5;
+                text-align: center;
+            }
+
+            .h2-size{
+                font-size: 36px;
+            }
+
+            .mt-1{
+                margin-top: 1rem;
+            }
+            .mt-2{
+                margin-top: 2rem;
+            }
+            .mt-3{
+                margin-top: 3rem;
+            }
+        }
+    </style>
+</head>
+<body class="donation-body">
+    <section class="donation">
+        <div class="mt-2 mt-1">
+            <img src="logo.svg" alt="">
+        </div>
+        <div class="mt-2">
+            <img src="thank_you.svg" alt="">
+        </div>
+        <div class="mt-2 mt-1h">
+            <h2 class="h2-size">
+                Thank you for your donation!
+            </h2>
+            <p>
+                We’ve sent the invoice to your inbox. Let’s get started on awesome things.
+            </p>
+        </div>
+        <button class="btn-1 mt-1 mb-1">
+            <a href="../themes/ghost/templates/index.html" class="btn-link">
+                <span class="base-color arrow">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path d="M427 234.625H167.296l119.702-119.702L256 85 85 256l171 171 29.922-29.924-118.626-119.701H427v-42.75z"/>
+                    </svg>
+                </span>
+                <span class="pl-h fw-b base-color">
+                    GO BACK
+                </span>
+            </a>
+        </button>
+    </section>
+</body>
+</html>
