@@ -88,7 +88,9 @@
     padding-bottom: 15px;
   }
 
-  .lucid{color: ;}
+  .lucid {
+    color: ;
+  }
 
   .btn-light:hover {
     border: 1px solid #fff;
@@ -121,6 +123,7 @@
   .wrapper {
     display: flex;
     align-items: stretch;
+    width: 100%;
   }
 
   #sidebar {
@@ -634,8 +637,10 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-sm-6 text-right follows"><a href="/following"><b>46</b> <span class="purple">Following</span></a></div>
-            <div class="col-sm-6 text-left follows"><a href="/followers"><b>165</b> <span class="purple">Followers</span></a></div>
+            <div class="col-sm-6 text-right follows"><a href="/following"><b>46</b> <span
+                  class="purple">Following</span></a></div>
+            <div class="col-sm-6 text-left follows"><a href="/followers"><b>165</b> <span
+                  class="purple">Followers</span></a></div>
           </div>
           <hr>
           <!-- <strong>BS</strong> -->
@@ -646,12 +651,15 @@
 
             <ul class="list-unstyled components text-center">
               {% if user.role == 'admin' %}
-              <li><a href="/timeline"><h6 class="text-center"><span><b>TIMELINE</b></span></h6></a></li>
+              <li><a href="/timeline">
+                  <h6 class="text-center"><span><b>TIMELINE</b></span></h6>
+                </a></li>
               <li>
                 <div class="dropdown">
-                         <span class=" dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                             <b>MY POSTS</b>
-                         </span>
+                  <span class=" dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <b>MY POSTS</b>
+                  </span>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                     <button class="dropdown-item"> <a href="/published-posts">Published Posts</a></button>
                     <button class="dropdown-item"> <a href="/drafts">Drafts</a></button>
@@ -659,26 +667,44 @@
                 </div>
               </li>
 
-              <li><a href="/videos"><h6 class="text-center"><span><b>VIDEOS</b></span></h6></a></li>
-              <li><a href="/portfolio"><h6 class="text-center"><span><b>PORTFOLIO</b></span></h6></a></li>
-              <li><a href="/about"><h6 class="text-center"><span><b>ABOUT</b></span></h6></a></li>
+              <li><a href="/videos">
+                  <h6 class="text-center"><span><b>VIDEOS</b></span></h6>
+                </a></li>
+              <li><a href="/portfolio">
+                  <h6 class="text-center"><span><b>PORTFOLIO</b></span></h6>
+                </a></li>
+              <li><a href="/about">
+                  <h6 class="text-center"><span><b>ABOUT</b></span></h6>
+                </a></li>
               {% elseif user.role == 'guest' %}
-              <li><a href="/"><h6 class="text-center"><span><b>HOME</b></span></h6></a></li>
-              <li><a href="/about"><h6 class="text-center"><span><b>ABOUT</b></span></h6></a></li>
+              <li><a href="/">
+                  <h6 class="text-center"><span><b>HOME</b></span></h6>
+                </a></li>
+              <li><a href="/about">
+                  <h6 class="text-center"><span><b>ABOUT</b></span></h6>
+                </a></li>
               {% else %}
-              <li><a href="/"><h6 class="text-center"><span><b>HOME</b></span></h6></a></li>
+              <li><a href="/">
+                  <h6 class="text-center"><span><b>HOME</b></span></h6>
+                </a></li>
               <li>
                 <div class="dropdown">
-                         <span class=" dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                             <b>MY POSTS</b>
-                         </span>
+                  <span class=" dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <b>MY POSTS</b>
+                  </span>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                     <button class="dropdown-item"> <a href="/published-posts">PUBLISHED POSTS</a></button>
                     <button class="dropdown-item"> <a href="/drafts">DRAFTS</a></button>
                   </div>
                 </div>
-              </li>              <li><a href="/profile"><h6 class="text-center"><span><b>PROFILE</b></span></h6></a></li>
-              <li><a href="/about"><h6 class="text-center"><span><b>ABOUT</b></span></h6></a></li>
+              </li>
+              <li><a href="/profile">
+                  <h6 class="text-center"><span><b>PROFILE</b></span></h6>
+                </a></li>
+              <li><a href="/about">
+                  <h6 class="text-center"><span><b>ABOUT</b></span></h6>
+                </a></li>
               {% endif %}
             </ul>
 
@@ -690,5 +716,3 @@
           </div>
         </div>
       </div>
-
-
